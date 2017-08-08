@@ -1,0 +1,24 @@
+<h2>Portfolios</h2>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Portfolio/Strategy</th>
+            <th>Total Value</th>
+            <th>Securities Value</th>
+            <th>Cash Balance</th>
+        </tr>
+    </thead>
+    <tbody>
+        <% @portfolios.each do |portfolio| %>
+      <tr>
+        <td><%= portfolio.name %></td>
+        <td><%= portfolio.total_value %></td>
+        <td><%= portfolio.equities_value %></td>
+        <td><%= portfolio.cash_balance %></td>
+        <td><%= link_to 'Show', portfolio %></td>
+        <td><%= link_to 'Edit', edit_portfolio_path(portfolio) %></td>
+        <td><%= link_to 'Destroy', portfolio, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+    </tbody>
+</table>
