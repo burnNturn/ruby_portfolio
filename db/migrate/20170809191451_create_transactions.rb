@@ -5,13 +5,13 @@ class CreateTransactions < ActiveRecord::Migration
       t.belongs_to :holding
       t.belongs_to :portfolio
       
-      t.date :date
-      t.string :activity
+      t.date    :date
+      t.string  :activity
       t.decimal :quantity
-      t.string :symbol
-      t.string :description
+      t.string  :symbol
+      t.string  :description
       t.decimal :price
-      t.decimal :commision
+      t.decimal :commission
       t.decimal :fees
       t.decimal :amount
       

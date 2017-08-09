@@ -85,7 +85,7 @@ ActiveRecord::Schema.define(version: 20170809191451) do
     t.string   "symbol"
     t.string   "description"
     t.decimal  "price"
-    t.decimal  "commision"
+    t.decimal  "commission"
     t.decimal  "fees"
     t.decimal  "amount"
     t.datetime "created_at",   null: false
