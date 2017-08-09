@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170808021613) do
+ActiveRecord::Schema.define(version: 20170809191451) do
 
   create_table "admins", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
@@ -62,6 +62,35 @@ ActiveRecord::Schema.define(version: 20170808021613) do
   end
 
   add_index "portfolios", ["user_id"], name: "index_portfolios_on_user_id"
+
+  create_table "securities", force: :cascade do |t|
+    t.string   "symbol"
+    t.string   "asset_class"
+    t.string   "description"
+    t.string   "identifier"
+    t.decimal  "previous_close"
+    t.decimal  "current_price"
+    t.datetime "last_api_call"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+  end
+
+  create_table "transactions", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "holding_id"
+    t.integer  "portfolio_id"
+    t.date     "date"
+    t.string   "activity"
+    t.decimal  "quantity"
+    t.string   "symbol"
+    t.string   "description"
+    t.decimal  "price"
+    t.decimal  "commision"
+    t.decimal  "fees"
+    t.decimal  "amount"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "",    null: false
