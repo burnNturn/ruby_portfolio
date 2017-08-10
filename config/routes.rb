@@ -8,9 +8,13 @@ Rails.application.routes.draw do
   root to: "home#index"
   
   resources :portfolio
+  resources :holdings
+  resources :transactions
+  resources :securities
   
   resources :modules do
     collection do
+      get 'index'
       get 'portfolios'
     end
   end

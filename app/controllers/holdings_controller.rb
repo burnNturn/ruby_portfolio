@@ -24,7 +24,9 @@ class HoldingsController < ApplicationController
   # POST /holdings
   # POST /holdings.json
   def create
-    @holding = Holding.new(holding_params)
+    # @portfolio = Portfolio.find(holding_params)
+    @holding = current_user.holdings.build(holding_params)
+    # @holding = Holding.new(holding_params)
 
     respond_to do |format|
       if @holding.save
@@ -69,6 +71,7 @@ class HoldingsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def holding_params
-      params.fetch(:holding, {})
+      params.require(:holding).permit(:holding, :portfolio_id, :symbol, :asset_class, 
+        :quantity, :date_opened, :cost_basis, :avg_price)
     end
 end

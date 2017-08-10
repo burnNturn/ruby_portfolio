@@ -5,6 +5,14 @@
 <table>
   <thead>
     <tr>
+      <th>User</th>
+      <th>Portfolio</th>
+      <th>Symbol</th>
+      <th>Asset Class</th>
+      <th>Quantity</th>
+      <th>Date Opened</th>
+      <th>Avg Price</th>
+      <th>Cost Basis</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -12,6 +20,14 @@
   <tbody>
     <% @holdings.each do |holding| %>
       <tr>
+        <td><%= holding.user_id %></td>
+        <td><%= holding.portfolio_id %></td>
+        <td><%= holding.symbol %></td>
+        <td><%= holding.asset_class %></td>
+        <td><%= holding.quantity %></td>
+        <td><%= holding.date_opened %></td>
+        <td><%= holding.avg_price %></td>
+        <td><%= holding.cost_basis %></td>
         <td><%= link_to 'Show', holding %></td>
         <td><%= link_to 'Edit', edit_holding_path(holding) %></td>
         <td><%= link_to 'Destroy', holding, method: :delete, data: { confirm: 'Are you sure?' } %></td>

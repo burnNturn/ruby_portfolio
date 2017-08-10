@@ -12,8 +12,9 @@
   <% end %>
   
   <div class="field">
-    <%= f.label :portfolio %>
-    <%= f.select_tag 'Portfolio', options_from_collection_for_select(@portfolios, 'id', 'name') %>
+    <%= f.label :portfolio_id %>
+    <% options=options_from_collection_for_select(Portfolio.all, :id, :name) %>
+    <%= f.select :portfolio_id, options, prompt: 'Select a Portfolio' %>
   </div>
   <div class='field'>
     <%= f.label :symbol %>
@@ -29,6 +30,15 @@
   </div>
   <div class='field'>
     <%= f.label :date_opened %>
+    <%= f.date_field :date_opened %>
+  </div>
+  <!--<div class='field'>-->
+  <!--  <%= f.label :cost_basis %>-->
+  <!--  <%= f.text_field :cost_basis %>-->
+  <!--</div>-->
+  <div class='field'>
+    <%= f.label :avg_price %>
+    <%= f.text_field :avg_price %>
   </div>
   <div class="actions">
     <%= f.submit %>
