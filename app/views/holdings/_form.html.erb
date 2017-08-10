@@ -1,0 +1,46 @@
+<%= form_for(@holding) do |f| %>
+  <% if @holding.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@holding.errors.count, "error") %> prohibited this holding from being saved:</h2>
+
+      <ul>
+      <% @holding.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  
+  <div class="field">
+    <%= f.label :portfolio_id %>
+    <% options=options_from_collection_for_select(Portfolio.all, :id, :name) %>
+    <%= f.select :portfolio_id, options, prompt: 'Select a Portfolio' %>
+  </div>
+  <div class='field'>
+    <%= f.label :symbol %>
+    <%= f.text_field :symbol %>
+  </div>
+  <div class='field'>
+    <%= f.label :asset_class %>
+    <%= f.text_field :asset_class %>
+  </div>
+  <div class='field'>
+    <%= f.label :quantity %>
+    <%= f.text_field :quantity %>
+  </div>
+  <div class='field'>
+    <%= f.label :date_opened %>
+    <%= f.date_field :date_opened %>
+  </div>
+  <!--<div class='field'>-->
+  <!--  <%= f.label :cost_basis %>-->
+  <!--  <%= f.text_field :cost_basis %>-->
+  <!--</div>-->
+  <div class='field'>
+    <%= f.label :avg_price %>
+    <%= f.text_field :avg_price %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

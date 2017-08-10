@@ -14,7 +14,10 @@
           <a class="navbar-brand" href="#">Ruby Portfolio</a>
         </div>
         <ul class="nav navbar-nav">
-          <!--Put navbar li here-->
+          <li><%= link_to 'Portfolios', portfolios_url, :class=> 'navbar-link' %></li>
+          <li><%= link_to 'Holdings', holdings_url, :class=> 'navbar-link' %></li>
+          <li><%= link_to 'Transactions', transactions_url, :class=> 'navbar-link' %></li>
+          <li><%= link_to 'Securities', securities_url, :class=> 'navbar-link' %></li>
         </ul>
         <ul class="nav navbar-nav navbar-right">
           <% if user_signed_in? %>

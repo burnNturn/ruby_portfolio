@@ -1,13 +1,20 @@
 Rails.application.routes.draw do
+  resources :transactions
+  resources :securities
+  resources :holdings
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   resources :portfolios
   devise_for :users
   root to: "home#index"
   
   resources :portfolio
+  resources :holdings
+  resources :transactions
+  resources :securities
   
   resources :modules do
     collection do
+      get 'index'
       get 'portfolios'
     end
   end
