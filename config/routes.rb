@@ -14,7 +14,6 @@ Rails.application.routes.draw do
   
   resources :modules do
     collection do
-      get 'index'
       get 'portfolios'
     end
   end
