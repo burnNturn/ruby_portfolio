@@ -15,6 +15,7 @@ class HoldingsController < ApplicationController
   # GET /holdings/new
   def new
     @holding = Holding.new
+    
   end
 
   # GET /holdings/1/edit
@@ -30,7 +31,7 @@ class HoldingsController < ApplicationController
 
     respond_to do |format|
       if @holding.save
-        format.html { redirect_to @holding, notice: 'Holding was successfully created.' }
+        format.html { redirect_to modules_url, notice: 'Holding was successfully created.' }
         format.json { render :show, status: :created, location: @holding }
       else
         format.html { render :new }

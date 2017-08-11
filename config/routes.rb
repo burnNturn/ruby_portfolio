@@ -1,13 +1,13 @@
 Rails.application.routes.draw do
-  resources :transactions
-  resources :securities
-  resources :holdings
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
-  resources :portfolios
   devise_for :users
+  
+  authenticated :user do
+    root 'modules#index', as: :authenticated_root
+  end
   root to: "home#index"
   
-  resources :portfolio
+  resources :portfolios
   resources :holdings
   resources :transactions
   resources :securities
