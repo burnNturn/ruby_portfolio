@@ -1,0 +1,20 @@
+<div class='col-lg-6 col-sm-12' class='portfolio-cards'>
+    <h2>Portfolios</h2></th>
+        <%= render @portfolios %>
+        <div id='totals-card'>
+                <table class='table'>
+                    <tbody>
+                        <tr>
+                            <th width='150px'>Totals</td>
+                            <th width='160px'><%= @portfolios.sum("total_value") %></td>
+                            <th width='223px'><%= @portfolios.sum("equities_value") %></td>
+                            <th width='196px'><%= @portfolios.sum("cash_balance") %></td>
+                        </tr>
+                    </tbody>
+                </table>
+        </div>
+</div>
+<div class='col-lg-6 col-sm-12'>
+    <h2>Holdings</h2>
+    <%= render @holdings %>
+</div>
