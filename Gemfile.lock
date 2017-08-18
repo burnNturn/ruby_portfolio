@@ -73,6 +73,8 @@ GEM
     haml (5.0.2)
       temple (>= 0.8.0)
       tilt
+    httparty (0.15.6)
+      multi_xml (>= 0.5.2)
     i18n (0.8.6)
     jbuilder (2.7.0)
       activesupport (>= 4.2.0)
@@ -106,6 +108,7 @@ GEM
     mini_portile2 (2.2.0)
     minitest (5.10.3)
     multi_json (1.12.1)
+    multi_xml (0.6.0)
     nested_form (0.3.2)
     nokogiri (1.8.0)
       mini_portile2 (~> 2.2.0)
@@ -214,6 +217,7 @@ DEPENDENCIES
   cancancan (~> 1.10)
   coffee-rails (~> 4.1.0)
   devise
+  httparty
   jbuilder (~> 2.0)
   jquery-rails
   rails (= 4.2.5)

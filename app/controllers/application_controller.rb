@@ -6,4 +6,16 @@ class ApplicationController < ActionController::Base
   def current_ability
     @current_ability ||= Ability.new(current_user)
   end
+  
+  def get_quick_quote
+    @quote = Intrinio.instance.quick_quote(app_params[:symbol])
+    render 'js', template: 'layouts/get_quick_quote'
+  end
+
+  
+  private
+  
+    def app_params
+      params.permit(:symbol, :utf8, :commit, :format)
+    end
 end
