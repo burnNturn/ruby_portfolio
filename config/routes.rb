@@ -18,6 +18,8 @@ Rails.application.routes.draw do
     end
   end
   
+  get '/quick_quote' => 'application#get_quick_quote', as: '/quick_quote'
+  
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

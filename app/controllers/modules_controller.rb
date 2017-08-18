@@ -4,9 +4,7 @@ class ModulesController < ApplicationController
         @user = current_user
         @portfolios = @user.portfolios
         @holdings = @user.holdings
-        byebug
-        intrinio = Intrinio.new()
-        puts intrinio.get_quote('AAPL')
+        #intrinio = Intrinio.new()
     end
     
     def portfolios
