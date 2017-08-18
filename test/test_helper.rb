@@ -7,4 +7,7 @@ class ActiveSupport::TestCase
   fixtures :all
 
   # Add more helper methods to be used by all tests here...
+  RSpec.configure do |config|
+		config.include Devise::Test::ControllerHelpers, type: :controller
+  end
 end
