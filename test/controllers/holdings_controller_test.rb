@@ -2,6 +2,8 @@ require 'test_helper'
 
 class HoldingsControllerTest < ActionController::TestCase
   setup do
+    @request.env["devise.mapping"] = Devise.mappings[:user]
+    sign_in users(:one)
     @holding = holdings(:one)
   end
 
@@ -18,10 +20,10 @@ class HoldingsControllerTest < ActionController::TestCase
 
   test "should create holding" do
     assert_difference('Holding.count') do
-      post :create, holding: {  }
+      post :create, holding: {symbol: @holding.symbol, quantity: @holding.quantity, avg_price: @holding.avg_price}
     end
 
-    assert_redirected_to holding_path(assigns(:holding))
+    assert_redirected_to modules_path()
   end
 
   test "should show holding" do
@@ -35,7 +37,7 @@ class HoldingsControllerTest < ActionController::TestCase
   end
 
   test "should update holding" do
-    patch :update, id: @holding, holding: {  }
+    patch :update, id: @holding, holding: {quantity: 200}
     assert_redirected_to holding_path(assigns(:holding))
   end
 
