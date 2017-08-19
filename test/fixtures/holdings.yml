@@ -11,7 +11,7 @@ one:
   asset_class: 'equity'
   date_opened: Time.now
   quantity: 13
-  avg_price: 22.04
+  avg_price: 22
   
 # column: value
 #
