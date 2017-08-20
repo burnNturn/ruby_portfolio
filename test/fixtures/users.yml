@@ -9,3 +9,7 @@ one:
   encrypted_password: password1
 two: {}
 #  column: value
+# no_password:
+#   email: user@example.com
+#   encrypted_password: 
+

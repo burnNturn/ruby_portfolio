@@ -1,10 +1,10 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  name: MyString
-  total_value: 9.99
-  equities_value: 9.99
-  cash_balance: 9.99
+  user: two
+  name: PortfolioOne
+  equities_value: 10
+  cash_balance: 20
 
 two:
   name: MyString

@@ -5,8 +5,9 @@ require 'rails/test_help'
 require 'devise'
 
 class ActiveSupport::TestCase
-  include Devise::Test
-  #include Devise::Test::ControllerHelpers
+  #include Devise::Test
+  include Devise::Test::ControllerHelpers
+  include Warden::Test::Helpers                        
   # Setup all fixtures in test/fixtures/*.yml for all tests in alphabetical order.
   fixtures :all
 

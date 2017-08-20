@@ -2,6 +2,8 @@ require 'test_helper'
 
 class PortfoliosControllerTest < ActionController::TestCase
   setup do
+    @request.env["devise.mapping"] = Devise.mappings[:user]
+    sign_in users(:one)
     @portfolio = portfolios(:one)
   end
 
@@ -21,7 +23,7 @@ class PortfoliosControllerTest < ActionController::TestCase
       post :create, portfolio: { cash_balance: @portfolio.cash_balance, equities_value: @portfolio.equities_value, name: @portfolio.name, total_value: @portfolio.total_value }
     end
 
-    assert_redirected_to portfolio_path(assigns(:portfolio))
+    assert_redirected_to modules_path()
   end
 
   test "should show portfolio" do
