@@ -15,4 +15,11 @@ class ModulesControllerTest < ActionController::TestCase
     assert_response :success
   end
   
+  test "should show portfolios" do
+    get :portfolios
+    assert_response :success
+    assert_not_nil assigns(:portfolios)
+  end
+
+  
 end
