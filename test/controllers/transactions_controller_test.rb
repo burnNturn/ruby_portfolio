@@ -2,6 +2,8 @@ require 'test_helper'
 
 class TransactionsControllerTest < ActionController::TestCase
   setup do
+    @request.env["devise.mapping"] = Devise.mappings[:user]
+    sign_in users(:one)
     @transaction = transactions(:one)
   end
 
@@ -18,7 +20,11 @@ class TransactionsControllerTest < ActionController::TestCase
 
   test "should create transaction" do
     assert_difference('Transaction.count') do
-      post :create, transaction: {  }
+      post :create, transaction: { date: @transaction.date, activity: @transaction.activity,
+                    quantity: @transaction.quantity, symbol: @transaction.symbol,
+                    description: @transaction.description, price: @transaction.symbol,
+                    commission: @transaction.commission, fees: @transaction.fees,
+                    amount: @transaction.amount, holding_id: @transaction.holding.id }
     end
 
     assert_redirected_to transaction_path(assigns(:transaction))
@@ -35,7 +41,7 @@ class TransactionsControllerTest < ActionController::TestCase
   end
 
   test "should update transaction" do
-    patch :update, id: @transaction, transaction: {  }
+    patch :update, id: @transaction, transaction: { quantity: 50 }
     assert_redirected_to transaction_path(assigns(:transaction))
   end
 

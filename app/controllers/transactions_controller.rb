@@ -5,6 +5,7 @@ class TransactionsController < ApplicationController
   # GET /transactions.json
   def index
     @transactions = Transaction.all
+    byebug
   end
 
   # GET /transactions/1
@@ -25,6 +26,7 @@ class TransactionsController < ApplicationController
   # POST /transactions.json
   def create
     @transaction = current_user.transactions.build(transaction_params)
+    
     #@transaction = Transaction.new(transaction_params)
 
     respond_to do |format|

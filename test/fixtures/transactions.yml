@@ -4,8 +4,18 @@
 # model remove the '{}' from the fixture names and add the columns immediately
 # below each fixture, per the syntax in the comments below
 #
-one: {}
-# column: value
-#
-two: {}
-#  column: value
+one:
+  user: one
+  portfolio: one
+  holding: one
+  date: '08/08/17'
+  activity: 'bought'
+  quantity: 3
+  symbol: 'AAPL'
+  description: 'bought 3 shares of AAPL'
+  price: 332.50
+  commission: 0
+  fees: 0
+  amount: 997.50
+
+

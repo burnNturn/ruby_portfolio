@@ -12,7 +12,6 @@ class HoldingTest < ActiveSupport::TestCase
   # end
   
   test "cost_basis should equal correct amount" do
-    byebug
     assert @holding.cost_basis.eql?(286) 
   end
 end

@@ -5,8 +5,8 @@
 # below each fixture, per the syntax in the comments below
 #
 one: 
-  portfolio: two
-  user: two
+  portfolio: one
+  user: one
   symbol: 'AAPL'
   asset_class: 'equity'
   date_opened: Time.now
@@ -16,6 +16,7 @@ one:
 # column: value
 #
 two: 
+  user: one
   portfolio: two
   quantity: 26
   avg_price: 55
