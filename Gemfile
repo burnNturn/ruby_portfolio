@@ -34,8 +34,6 @@ gem 'jbuilder', '~> 2.0'
 # bundle exec rake doc:rails generates the API under doc/api.
 gem 'sdoc', '~> 0.4.0', group: :doc
 
-# rspec testing
-gem 'rspec', '~> 3.6'
 
 # zeus-Boot any rails app in under a second
 gem 'zeus', '~> 0.15.14'
@@ -53,6 +51,8 @@ gem 'httparty'
 # gem 'capistrano-rails', group: :development
 
 group :development, :test do
+  gem 'rspec-rails', '~> 3.0.0'
+  
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
 end

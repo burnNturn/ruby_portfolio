@@ -4,6 +4,9 @@ require 'rails/test_help'
 # note: require 'devise' after require 'rspec/rails'
 require 'devise'
 
+#require 'webmock/minitest'
+#WebMock.disable_net_connect!
+
 class ActiveSupport::TestCase
   include Devise::Test
   include Devise::Test::ControllerHelpers

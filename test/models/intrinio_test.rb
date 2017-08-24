@@ -1,7 +1,9 @@
 require 'test_helper'
 
-class HoldingTest < ActiveSupport::TestCase
+class IntrinioTest < ActiveSupport::TestCase
    
-   
+   test "test the test" do
+       assert true
+   end
     
 end

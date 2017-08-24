@@ -1,0 +1,23 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+# This model initially had no columns defined.  If you add columns to the
+# model remove the '{}' from the fixture names and add the columns immediately
+# below each fixture, per the syntax in the comments below
+#
+one: 
+  portfolio: one
+  user: one
+  symbol: 'AAPL'
+  asset_class: 'equity'
+  date_opened: Time.now
+  quantity: 13
+  avg_price: 22
+  
+# column: value
+#
+two: 
+  user: one
+  portfolio: two
+  quantity: 26
+  avg_price: 55
+#  column: value
