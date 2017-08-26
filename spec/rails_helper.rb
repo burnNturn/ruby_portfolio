@@ -4,6 +4,9 @@ require 'spec_helper'
 require File.expand_path("../../config/environment", __FILE__)
 require 'rspec/rails'
 require 'devise'
+require 'support/factory_girl'
+
+
 
 # Requires supporting ruby files with custom matchers and macros, etc, in
 # spec/support/ and its subdirectories. Files matching `spec/**/*_spec.rb` are
@@ -21,6 +24,15 @@ ActiveRecord::Migration.maintain_test_schema!
 RSpec.configure do |config|
   # For Devise >= 4.1.0
   config.include Devise::Test::ControllerHelpers, :type => :controller
+  config.include Devise::Test::ControllerHelpers, type: :view
+
+  
+  config.include Warden::Test::Helpers
+  Warden.test_mode!
+  
+  config.after do
+    Warden.test_reset!
+  end
   
   # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures
   config.fixture_path = "#{::Rails.root}/spec/fixtures"
