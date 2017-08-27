@@ -2,7 +2,8 @@ require 'rails_helper'
 
 RSpec.describe HoldingsController, :type => :controller do
     fixtures :users, :holdings, :portfolios
-    
+    @request.env["devise.mapping"] = Devise.mappings[:user]
+    user = sign_in users(:one)
     describe "GET index" do
         
         it "assigns @holdings" do

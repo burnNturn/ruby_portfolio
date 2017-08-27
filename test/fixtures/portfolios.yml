@@ -5,6 +5,7 @@ one:
   name: PortfolioOne
   equities_value: 10
   cash_balance: 20
+  total_value: 30
 
 two:
   user: one

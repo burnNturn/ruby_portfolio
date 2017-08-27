@@ -1,6 +1,6 @@
 class HoldingsController < ApplicationController
   before_action :set_holding, only: [:show, :edit, :update, :destroy]
-
+  before_action :authenticate_user!
   # GET /holdings
   # GET /holdings.json
   def index
