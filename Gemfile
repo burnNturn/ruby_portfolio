@@ -44,7 +44,8 @@ gem 'zeus', '~> 0.15.14'
 # Use Unicorn as the app server
 # gem 'unicorn'
 
-#
+#Factory Girl
+gem 'factory_bot_rails', '~> 4.0'
 
 # httparty for api calls
 gem 'httparty'

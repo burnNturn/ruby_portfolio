@@ -10,6 +10,7 @@ require 'devise'
 class ActiveSupport::TestCase
   include Devise::Test
   include Devise::Test::ControllerHelpers
+  include FactoryBot::Syntax::Methods
   #include Warden::Test::Helpers                        
   # Setup all fixtures in test/fixtures/*.yml for all tests in alphabetical order.
   fixtures :all
