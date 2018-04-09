@@ -1,5 +1,5 @@
 class Transaction < ActiveRecord::Base
-    before_save :get_portfolio_id
+    # before_save :get_portfolio_id
     
     belongs_to :user
     belongs_to :holding
@@ -7,7 +7,10 @@ class Transaction < ActiveRecord::Base
     
     protected
     
-    def get_portfolio_id
-        self.portfolio_id = self.holding.portfolio.id
-    end
+    # def get_portfolio_id
+    #     #byebug
+    #     self.portfolio_id = self.holding.portfolio.id
+    #     #byebug
+    #     return self.portfolio_id
+    # end
 end
