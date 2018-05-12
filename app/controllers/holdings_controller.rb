@@ -14,7 +14,10 @@ class HoldingsController < ApplicationController
 
   # GET /holdings/new
   def new
+    byebug
+    @portfolio = Portfolio.where(id:params[:portfolio_id])
     @holding = Holding.new
+    #@holding.portfolio = @portfolio
     
   end
 
@@ -75,4 +78,5 @@ class HoldingsController < ApplicationController
       params.require(:holding).permit(:holding, :portfolio_id, :symbol, :asset_class, 
         :quantity, :date_opened, :cost_basis, :avg_price)
     end
-end
+    
+end 

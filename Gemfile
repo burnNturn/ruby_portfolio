@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.2.5'
+gem 'rails', '4.2.7.1'
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3'
 # Use SCSS for stylesheets
@@ -21,7 +21,7 @@ gem 'coffee-rails', '~> 4.1.0'
 gem 'devise'
 
 # admin
-gem 'rails_admin', '~> 1.2'
+gem 'rails_admin', '~> 1.3'
 # authorization
 gem 'cancancan', '~> 1.10'
 
@@ -55,6 +55,12 @@ gem 'httparty'
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
+  
+  # rspec
+  gem 'rspec-rails', '~> 3.6'
+  # factory-bot
+  gem 'factory_bot_rails'
+  gem 'faker'
 end
 
 group :development do

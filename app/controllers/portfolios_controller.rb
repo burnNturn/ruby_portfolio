@@ -12,6 +12,9 @@ class PortfoliosController < ApplicationController
   # GET /portfolios/1
   # GET /portfolios/1.json
   def show
+    @holdings = @portfolio.holdings
+    @portfolio.calculate_equities_value
+    @portfolio.calculate_total_value
   end
 
   # GET /portfolios/new

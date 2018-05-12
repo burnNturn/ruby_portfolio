@@ -61,6 +61,10 @@ class TransactionsController < ApplicationController
       format.json { head :no_content }
     end
   end
+  
+  def purchase
+    @transaction = Transaction.new
+  end
 
   private
     # Use callbacks to share common setup or constraints between actions.
