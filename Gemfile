@@ -34,6 +34,12 @@ gem 'jbuilder', '~> 2.0'
 # bundle exec rake doc:rails generates the API under doc/api.
 gem 'sdoc', '~> 0.4.0', group: :doc
 
+# rspec testing
+gem 'rspec', '~> 3.6'
+
+# zeus-Boot any rails app in under a second
+gem 'zeus', '~> 0.15.14'
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
