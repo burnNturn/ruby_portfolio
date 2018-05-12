@@ -9,7 +9,11 @@ Rails.application.routes.draw do
   
   resources :portfolios
   resources :holdings
-  resources :transactions
+  resources :transactions do
+    collection do
+      get 'purchase'
+    end
+  end
   resources :securities
   
   resources :modules do

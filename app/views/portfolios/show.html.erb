@@ -1,24 +1,35 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Name:</strong>
-  <%= @portfolio.name %>
-</p>
+<div class='col-lg-6 col-sm-12'>
+  <p>
+    <strong>Name:</strong>
+    <%= @portfolio.name %>
+  </p>
+  
+  <p>
+    <strong>Total value:</strong>
+    <%= @portfolio.total_value %>
+  </p>
+  
+  <p>
+    <strong>Equities value:</strong>
+    <%= @portfolio.equities_value %>
+  </p>
+  
+  <p>
+    <strong>Cash balance:</strong>
+    <%= @portfolio.cash_balance %>
+  </p>
+  
+  <%= link_to 'Add Transaction', purchase_transactions_path(:portfolio_id => @portfolio.id) %>
+  <%= link_to 'Add Holding', new_holding_path(:portfolio_id => @portfolio.id) %>
+  <%= link_to 'Edit', edit_portfolio_path(@portfolio) %> |
+  <%= link_to 'Back', portfolios_path %>
+</div>
 
-<p>
-  <strong>Total value:</strong>
-  <%= @portfolio.total_value %>
-</p>
+<div class='col-lg-6 col-sm-12'>
+    <h2>Holdings</h2>
+    <%= link_to 'Add a Holding', new_holding_path %>
+    <%= render @holdings %>
+</div>
 
-<p>
-  <strong>Equities value:</strong>
-  <%= @portfolio.equities_value %>
-</p>
-
-<p>
-  <strong>Cash balance:</strong>
-  <%= @portfolio.cash_balance %>
-</p>
-
-<%= link_to 'Edit', edit_portfolio_path(@portfolio) %> |
-<%= link_to 'Back', portfolios_path %>

@@ -6,9 +6,23 @@ class Holding < ActiveRecord::Base
     
     has_many :transactions
     
+    @@current_price_var = BigDecimal.new("0.00")
+    # def initialize
+    #     @@current_price_var = BigDecimal.new("0.00")
+    # end
+    
+    def current_price
+        @@current_price_var = Intrinio.instance.quick_quote(self.symbol)
+    end
+    
+    def current_value
+        self.quantity * @@current_price_var
+    end
+    
     protected
     
     def calculate_cost_basis
         self.cost_basis = self.quantity * self.avg_price
     end
+    
 end

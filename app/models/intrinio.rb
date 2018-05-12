@@ -11,7 +11,7 @@ class Intrinio
     end
     
     def quick_quote(symbol)
-        options = {query: {identifier: 'AAPL', item: 'last_price'}}
+        options = {query: {identifier: symbol, item: 'last_price'}}
         data_point(options).parsed_response["value"]
         
     end
