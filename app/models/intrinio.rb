@@ -31,6 +31,9 @@ class Intrinio
         self.class.get('/companies', options)
     end
     
+    def multi_quote(symbols)
+        
+    end
     
     private
     

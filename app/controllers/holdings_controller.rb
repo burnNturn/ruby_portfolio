@@ -29,6 +29,7 @@ class HoldingsController < ApplicationController
   # POST /holdings.json
   def create
     # @portfolio = Portfolio.find(holding_params)
+    byebug
     @holding = current_user.holdings.build(holding_params)
     # @holding = Holding.new(holding_params)
 
