@@ -75,6 +75,7 @@ class TransactionsController < ApplicationController
   end
   
   def purchase
+    @portfolio = Portfolio.where(id:params[:portfolio_id])
     @transaction = Transaction.new
   end
 

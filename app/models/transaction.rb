@@ -11,7 +11,6 @@ class Transaction < ActiveRecord::Base
     protected
     
     def calculate_amount
-        byebug
         self.amount = (self.quantity * self.price) + self.commission + self.fees
     end
     
@@ -20,9 +19,7 @@ class Transaction < ActiveRecord::Base
         if Holding.where(user: self.user, portfolio: self.portfolio, symbol: self.symbol).exists?
             @holding = Holding.where(user: self.user, portfolio: self.portfolio, symbol: self.symbol).first
             @holding.recalculate(self.quantity, self.amount)
-            byebug
         else
-            byebug
             @holding = Holding.create(user: self.user, portfolio: self.portfolio, 
                 symbol: self.symbol, quantity: self.quantity,
                 cost_basis: self.price, avg_price: self.amount)

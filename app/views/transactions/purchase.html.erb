@@ -11,15 +11,13 @@
     <% end %>
     <div class="field">
     <%= f.label :portfolio_id %>
-    <% byebug %>
     <% options=options_from_collection_for_select(Portfolio.all, :id, :name) %>
     <%= f.select :portfolio_id, options, prompt: 'Select a Portfolio' %>
     <% if @portfolio.present? %>
       <script>
-        debugger;
         var portfolio_id = <%= @portfolio.ids %>
         $(document).ready(function() {
-          $('#holding_portfolio_id').val(portfolio_id).change().attr('disabled', true);
+          $('#transaction_portfolio_id').val(portfolio_id).change().attr('disabled', true);
         });
       </script>
       <%= f.hidden_field :portfolio_id, :value => @portfolio.ids %>

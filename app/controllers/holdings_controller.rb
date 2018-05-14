@@ -14,7 +14,6 @@ class HoldingsController < ApplicationController
 
   # GET /holdings/new
   def new
-    byebug
     @portfolio = Portfolio.where(id:params[:portfolio_id])
     @holding = Holding.new
     #@holding.portfolio = @portfolio
