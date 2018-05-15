@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   resources :transactions do
     collection do
       get 'purchase'
+      get 'sale'
     end
   end
   resources :securities

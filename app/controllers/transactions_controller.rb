@@ -75,7 +75,12 @@ class TransactionsController < ApplicationController
   end
   
   def purchase
-    @portfolio = Portfolio.where(id:params[:portfolio_id])
+    @portfolio = Portfolio.where(id:params[:portfolio_id]).first
+    @transaction = Transaction.new
+  end
+  
+  def sale
+    @holding = Holding.where(id:params[:holding_id]).first
     @transaction = Transaction.new
   end
 
