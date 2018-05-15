@@ -25,7 +25,19 @@ class TransactionsController < ApplicationController
   # POST /transactions.json
   def create
     @transaction = current_user.transactions.build(transaction_params)
-    #@transaction = Transaction.new(transaction_params)
+    # if @holding_id.nil?
+    #   byebug
+    #   @holding = Transaction.find_holding(current_user, :symbol)
+    #   if @holding.blank?
+    #     @holding = Holding.create(symbol: transaction_params[:symbol], 
+    #       quantity: transaction_params[:quantity], cost_basis: transaction_params[:price],
+    #       avg_price: transaction_params[:amount])
+    #   end
+    #   @transaction.holding_id = @holding.id
+    # end
+    # Transaction.build_description
+    # @transaction = current_user.transactions.build(transaction_params)
+    # #@transaction = Transaction.new(transaction_params)
 
     respond_to do |format|
       if @transaction.save
@@ -63,6 +75,7 @@ class TransactionsController < ApplicationController
   end
   
   def purchase
+    @portfolio = Portfolio.where(id:params[:portfolio_id])
     @transaction = Transaction.new
   end
 
@@ -74,7 +87,7 @@ class TransactionsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def transaction_params
-      params.require(:transaction).permit(:transaction, :holding_id, :date, 
+      params.require(:transaction).permit(:transaction, :portfolio_id, :holding_id, :date, 
         :activity, :quantity, :symbol, :description, :price, :commission, :fees, :amount)
     end
 end
