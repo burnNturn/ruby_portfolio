@@ -34,5 +34,20 @@
 <%= link_to 'Edit', edit_holding_path(@holding) %> | 
 <%= link_to 'Back', holdings_path %>
 
+<table>
+  <thead>
+    <tr>
+      <th>Date</th>
+      <th>Activity</th>
+      <th>Quantity</th>
+      <th>Symbol</th>
+      <th>Description</th>
+      <th>Price</th>
+      <th>Commission</th>
+      <th>Fees</th>
+      <th>Amount</th>
+    </tr>
+  </thead>
 <% @transactions = @holding.transactions %>
 <%= render @transactions %>
+</table>

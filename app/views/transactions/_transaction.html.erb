@@ -1,63 +1,14 @@
-<table>
-  <thead>
+<tbody>
     <tr>
-      <th>Date</th>
-      <th>Activity</th>
-      <th>Quantity</th>
-      <th>Symbol</th>
-      <th>Description</th>
-      <th>Price</th>
-      <th>Commission</th>
-      <th>Fees</th>
-      <th>Amount</th>
+      <td><%= transaction.date %></td>
+      <td><%= transaction.activity %></td>
+      <td><%= transaction.quantity %></td>
+      <td><%= transaction.symbol %></td>
+      <td><%= transaction.description %></td>
+      <td><%= transaction.price %></td>
+      <td><%= transaction.commission %></td>
+      <td><%= transaction.fees %></td>
+      <td><%= transaction.amount %></td>
     </tr>
-  </thead>
+</tbody>
 
-  <tbody>
-    <% @transactions.each do |transaction| %>
-      <tr>
-        <td><%= transaction.date %></td>
-        <td><%= transaction.activity %></td>
-        <td><%= transaction.quantity %></td>
-        <td><%= transaction.symbol %></td>
-        <td><%= transaction.description %></td>
-        <td><%= transaction.price %></td>
-        <td><%= transaction.commission %></td>
-        <td><%= transaction.fees %></td>
-        <td><%= transaction.amount %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<div class="panel panel-default">
-    <div class="panel-body">
-        <table class="table borderless">
-            <thead>
-                <tr>
-                  <th>Date</th>
-                  <th>Activity</th>
-                  <th>Quantity</th>
-                  <th>Symbol</th>
-                  <th>Description</th>
-                  <th>Price</th>
-                  <th>Commission</th>
-                  <th>Fees</th>
-                  <th>Amount</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td class='td transaction-date'><%= transaction.date %></td>
-                    <td class='td transaction-activity'><%= transaction.activity %></td>
-                    <td class='td transaction-quantity'><%= transaction.quantity %></td>
-                    <td class='td transaction-symbol'><%= transaction.symbol %></td>
-                    <td class='td transaction-descr'><%= transaction.description %></td>
-                    <td class='td transaction-price'><%= transaction.price %></td>
-                    <td class='td transaction-commission'><%= transaction.commission %></td>
-                    <td class='td transaction-fees'><%= transaction.fees %></td>
-                    <td class='td transaction-amount'><%= transaction.amount %></td>
-            </tbody>
-        </table>
-    </div>
-</div>
