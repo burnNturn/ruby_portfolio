@@ -28,6 +28,14 @@
     <strong>Cost Basis</strong>
     <%= @holding.cost_basis %>
 </p>
+<p>
+    <strong>Current Price</strong>
+    <%= @holding.current_price %>
+</p>
+<p>
+    <strong>Current Value</strong>
+    <%= @holding.current_value %>
+</p>
 
 <%= link_to 'Buy', purchase_transactions_path(:holding_id => @holding.id) %> | 
 <%= link_to 'Sell', sale_transactions_path(:holding_id => @holding.id) %> | 
