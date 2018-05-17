@@ -10,39 +10,24 @@
         </div>
     <% end %>
     <div class="field">
-    <%= f.label :portfolio_id %>
-    <% options=options_from_collection_for_select(Portfolio.all, :id, :name) %>
-    <%= f.select :portfolio_id, options, prompt: 'Select a Portfolio' %>
-    <% if @portfolio.present? %>
-      <script>
-        var portfolio_id = <%= @portfolio.id %>
-        $(document).ready(function() {
-          $('#transaction_portfolio_id').val(portfolio_id).change().attr('disabled', true);
-        });
-      </script>
-      <%= f.hidden_field :portfolio_id, :value => @portfolio.id %>
-    <% end %>
+        <%= f.hidden_field :portfolio_id, :value => @holding.portfolio_id %>
+        <%= f.hidden_field :holding_id, :value => @holding.id %>
+    </div>
+    <div class='field'>
+        <%= f.label :symbol %>
+        <%= f.text_field :symbol_temp, :value => @holding.symbol, :disabled => true %>
+        <%= f.hidden_field :symbol, :value => @holding.symbol %>
     </div>
     <div class='field'>
         <%= f.label :date %>
         <%= f.date_field :date, :value => Date.today %>
     </div>
     <div class='field'>
-        <%= f.hidden_field :activity, :value => 'Buy' %>
+        <%= f.hidden_field :activity, :value => 'Sell' %>
     </div>
     <div class='field'>
         <%= f.label :quantity %>
         <%= f.text_field :quantity %>
-    </div>
-    <div class='field'>
-        <%= f.label :symbol %>
-        <% if @holding.present? %>
-            <%= f.text_field :symbol_holder, :value => @holding.symbol, :disabled => true %>
-            <%= f.hidden_field :symbol, :value => @holding.symbol %>
-            <%= f.hidden_field :holding_id, :value => @holding.id %>
-        <% else %>
-            <%= f.text_field :symbol %>
-        <% end %>
     </div>
     <div class='field'>
         <%= f.label :price %>

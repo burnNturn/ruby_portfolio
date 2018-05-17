@@ -15,10 +15,13 @@ class Transaction < ActiveRecord::Base
     end
     
     def find_holding()
-        
-        if Holding.where(user: self.user, portfolio: self.portfolio, symbol: self.symbol).exists?
+        byebug
+        if self.holding.present?
+            @holding = self.holding
+            @holding.sell_holding(self.quantity, self.amount)
+        elsif Holding.where(user: self.user, portfolio: self.portfolio, symbol: self.symbol).exists?
             @holding = Holding.where(user: self.user, portfolio: self.portfolio, symbol: self.symbol).first
-            @holding.recalculate(self.quantity, self.amount)
+            @holding.buy_holding(self.quantity, self.amount)
         else
             @holding = Holding.create(user: self.user, portfolio: self.portfolio, 
                 symbol: self.symbol, quantity: self.quantity,
@@ -29,6 +32,7 @@ class Transaction < ActiveRecord::Base
     end
     
     def build_description
+        byebug
        self.description = self.activity + " " + self.quantity.to_s + " shares of" + 
         self.symbol + " @ " + self.price.to_s
     end

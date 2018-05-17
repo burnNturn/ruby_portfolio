@@ -75,7 +75,17 @@ class TransactionsController < ApplicationController
   end
   
   def purchase
-    @portfolio = Portfolio.where(id:params[:portfolio_id])
+    if params[:holding_id].present?
+      @holding = Holding.where(id:params[:holding_id]).first
+      @portfolio = @holding.portfolio
+    else
+      @portfolio = Portfolio.where(id:params[:portfolio_id]).first
+    end
+    @transaction = Transaction.new
+  end
+  
+  def sale
+    @holding = Holding.where(id:params[:holding_id]).first
     @transaction = Transaction.new
   end
 
