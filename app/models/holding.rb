@@ -19,9 +19,16 @@ class Holding < ActiveRecord::Base
         self.quantity * @@current_price_var.to_d
     end
     
-    def recalculate(qty_of_new, cost_of_new)
-       self.quantity += qty_of_new
-       self.cost_basis += cost_of_new
+    def buy_holding(qty_bought, cost_of_bought)
+       self.quantity += qty_bought
+       self.cost_basis += cost_of_bought
+       self.avg_price = self.cost_basis / self.quantity
+       self.save
+    end
+    
+    def sell_holding(qty_sold, funds_from_sold)
+       self.quantity -= qty_sold
+       self.cost_basis -= funds_from_sold
        self.avg_price = self.cost_basis / self.quantity
        self.save
     end

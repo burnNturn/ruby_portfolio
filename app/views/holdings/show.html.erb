@@ -28,5 +28,11 @@
     <strong>Cost Basis</strong>
     <%= @holding.cost_basis %>
 </p>
-<%= link_to 'Edit', edit_holding_path(@holding) %> |
+
+<%= link_to 'Buy', purchase_transactions_path(:holding_id => @holding.id) %> | 
+<%= link_to 'Sell', sale_transactions_path(:holding_id => @holding.id) %> | 
+<%= link_to 'Edit', edit_holding_path(@holding) %> | 
 <%= link_to 'Back', holdings_path %>
+
+<% @transactions = @holding.transactions %>
+<%= render @transactions %>

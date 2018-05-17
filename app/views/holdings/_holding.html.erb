@@ -21,6 +21,7 @@
                     <td><%= holding.current_price %></td>
                     <td><%= holding.current_value %></td>
                     <td><%= link_to 'Sell', sale_transactions_path(:holding_id => holding.id) %></td>
+                    <td><%= link_to 'Show', holding_path(holding.id) %></td>
                 </tr>
             </tbody>
         </table>

@@ -15,7 +15,8 @@
     </div>
     <div class='field'>
         <%= f.label :symbol %>
-        <%= f.text_field :symbol, :value => @holding.symbol, :disabled => true %>
+        <%= f.text_field :symbol_temp, :value => @holding.symbol, :disabled => true %>
+        <%= f.hidden_field :symbol, :value => @holding.symbol %>
     </div>
     <div class='field'>
         <%= f.label :date %>
