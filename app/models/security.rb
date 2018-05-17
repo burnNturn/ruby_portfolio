@@ -1,2 +1,22 @@
 class Security < ActiveRecord::Base
+    before_save :update_security
+    
+    protected
+    
+    def update_security
+        byebug
+        options = {query: {identifier: self.symbol, item: 'name,cik,close_price,last_price'}}
+        company = Intrinio.instance.data_point(options).parsed_response["data"]
+        stock = Hash.new
+        company.each do |item|
+            stock[item["item"]] = item["value"]
+        end
+        self.asset_class = 'stock'
+        self.description = stock['name']
+        self.identifier = stock['cik']
+        # stock = Intrinio.instance.prices(self.symbol)
+        self.previous_close = stock['close_price']
+        self.current_price = stock['last_price']
+        self.last_api_call = Time.now()
+    end
 end

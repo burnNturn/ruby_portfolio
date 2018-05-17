@@ -69,6 +69,6 @@ class SecuritiesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def security_params
-      params.fetch(:security, {})
+      params.require(:security).permit(:symbol)
     end
 end
