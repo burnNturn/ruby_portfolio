@@ -15,7 +15,11 @@ Rails.application.routes.draw do
       get 'sale'
     end
   end
-  resources :securities
+  resources :securities do
+    collection do
+      post 'get_list'
+    end
+  end
   
   resources :modules do
     collection do

@@ -1,10 +1,20 @@
 <p id="notice"><%= notice %></p>
 
+<% if current_user.admin? %>
+  <%= button_to "Update Securities List", get_list_securities_path %>
+<% end %>
+
 <h1>Listing Securities</h1>
 
 <table>
   <thead>
     <tr>
+      <th>Symbol</th>
+      <th>Company</th>
+      <th>CIK</th>
+      <th>Open</th>
+      <th>Last Price</th>
+      <th>Last Update</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -12,6 +22,12 @@
   <tbody>
     <% @securities.each do |security| %>
       <tr>
+        <td><%= security.symbol %></td>
+        <td><%= security.description %></td>
+        <td><%= security.identifier %></td>
+        <td><%= security.previous_close %></td>
+        <td><%= security.current_price %></td>
+        <td><%= security.last_api_call %></td>
         <td><%= link_to 'Show', security %></td>
         <td><%= link_to 'Edit', edit_security_path(security) %></td>
         <td><%= link_to 'Destroy', security, method: :delete, data: { confirm: 'Are you sure?' } %></td>

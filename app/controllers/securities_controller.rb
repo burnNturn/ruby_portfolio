@@ -60,7 +60,22 @@ class SecuritiesController < ApplicationController
       format.json { head :no_content }
     end
   end
-
+  
+  def get_list
+    pages = Intrinio.instance.companies().parsed_response['total_pages']
+    (1...pages).each do |page|
+      options = {query: {page_number: page}}
+      companies = Intrinio.instance.companies(options).parsed_response['data']
+      companies.each do |company|
+        @security = Security.new
+        @security.load_security(company)
+        
+      end
+    end
+    redirect_to securities_path
+  end
+  
+  
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_security
