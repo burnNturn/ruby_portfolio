@@ -4,7 +4,7 @@ class SecuritiesController < ApplicationController
   # GET /securities
   # GET /securities.json
   def index
-    @securities = Security.all
+    @securities = Security.paginate(:page => params[:page])
   end
 
   # GET /securities/1
@@ -62,16 +62,7 @@ class SecuritiesController < ApplicationController
   end
   
   def get_list
-    pages = Intrinio.instance.companies().parsed_response['total_pages']
-    (1...pages).each do |page|
-      options = {query: {page_number: page}}
-      companies = Intrinio.instance.companies(options).parsed_response['data']
-      companies.each do |company|
-        @security = Security.new
-        @security.load_security(company)
-        
-      end
-    end
+    IntrinioWorker.perform_async
     redirect_to securities_path
   end
   

@@ -32,7 +32,7 @@ class Security < ActiveRecord::Base
     
     def needs_update
         update_interval = 20*60
-       if last_api_call.ago >= update_interval
+       if (self.last_api_call + update_interval) <= Time.now()
            true
        else
            false
