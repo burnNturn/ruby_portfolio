@@ -1,0 +1,11 @@
+
+var isHidden = $('#isHidden').val()
+if (isHidden == 'true') {
+    $('#symbol-search-results').dropdown('toggle');
+    $('#isHidden').val('false');
+};
+
+$('#symbol-search-results').replaceWith('<%= j render(partial: "securities/search_drop_down") %>' );
+
+
+

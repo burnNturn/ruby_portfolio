@@ -17,7 +17,7 @@ gem 'coffee-rails', '~> 4.1.0'
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
 
-gem 'will_paginate'
+gem 'will_paginate', '~> 3.1', '>= 3.1.6'
 
 #Sidekiq dependecies
 gem 'sinatra', require: false

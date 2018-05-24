@@ -66,6 +66,11 @@ class SecuritiesController < ApplicationController
     redirect_to securities_path
   end
   
+  def search
+    @securities = Security.where('symbol LIKE ?', "#{params[:symbol]}%").first(10)
+    render 'js', template: 'securities/search_drop_down'
+  end
+  
   
   private
     # Use callbacks to share common setup or constraints between actions.

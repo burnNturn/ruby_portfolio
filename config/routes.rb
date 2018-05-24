@@ -22,6 +22,7 @@ Rails.application.routes.draw do
   resources :securities do
     collection do
       post 'get_list'
+      get :search
     end
   end
   
