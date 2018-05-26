@@ -2,6 +2,7 @@
     <% if @securities.present? %>
         <% @securities.each do |security| %>
             <li><%= security.symbol %> | <%= security.description %></li>
+            <li class='divider'></li>
         <% end %>
     <% end %>
 </ul>

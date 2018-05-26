@@ -1,6 +1,6 @@
 
-var isHidden = $('#isHidden').val()
-if (isHidden == 'true') {
+var isHidden = document.getElementById('symbol-search-dropdown').className
+if (!isHidden.includes('open')) {
     $('#symbol-search-results').dropdown('toggle');
     $('#isHidden').val('false');
 };
