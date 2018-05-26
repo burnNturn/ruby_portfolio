@@ -11,6 +11,10 @@ class ApplicationController < ActionController::Base
     @quote = Intrinio.instance.quick_quote(app_params[:symbol])
     render 'js', template: 'layouts/get_quick_quote'
   end
+  
+  def index
+    @securities = Security.none
+  end
 
   
   private
