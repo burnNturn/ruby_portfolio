@@ -4,6 +4,7 @@ class ModulesController < ApplicationController
         @user = current_user
         @portfolios = @user.portfolios
         @holdings = @user.holdings
+        #@securities = Security.first(10)
         #intrinio = Intrinio.new()
     end
     

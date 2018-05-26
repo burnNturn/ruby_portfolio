@@ -16,6 +16,37 @@
  @import "bootstrap-sprockets";
  @import "bootstrap";
  @import "modules";
- @import "transactions"
+ @import "transactions";
+ 
+ 
+#quick-quote-form {
+ width: 70%;
+}
+
+#symbol-search-field {
+ float: left;
+ width: 65%;
+} 
+
+#symbol-search-submit {
+ float: right;
+ width: 30%;
+}
+ 
+#search-drop-down {
+ visibility: visible;
+ z-index: +1; position:relative;
+}
+ 
+#symbol-search-results {
+ border: 1px solid black;
+ background-color: white;
+ visibility: visible;
+}
+
+#symbol-search-dropdown {
+ position: relative;
+ float: left;
+}
  
 

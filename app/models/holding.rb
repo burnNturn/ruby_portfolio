@@ -1,5 +1,6 @@
 class Holding < ActiveRecord::Base
     before_save :calculate_cost_basis
+    before_save :update_security
     
     belongs_to :user
     belongs_to :portfolio
@@ -36,8 +37,19 @@ class Holding < ActiveRecord::Base
     protected
     
     def calculate_cost_basis
-        byebug
         self.cost_basis = self.quantity * self.avg_price
+    end
+    
+    def update_security
+        @security = Security.where(symbol: self.symbol).first
+        if @security.present?
+            @security.update
+        else
+            @security = Security.create(symbol: self.symbol)
+            self.security_id = @security.id
+        end
+        
+        
     end
     
 end

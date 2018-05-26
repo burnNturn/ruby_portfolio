@@ -4,7 +4,7 @@ class SecuritiesController < ApplicationController
   # GET /securities
   # GET /securities.json
   def index
-    @securities = Security.all
+    @securities = Security.paginate(:page => params[:page])
   end
 
   # GET /securities/1
@@ -60,7 +60,18 @@ class SecuritiesController < ApplicationController
       format.json { head :no_content }
     end
   end
-
+  
+  def get_list
+    IntrinioWorker.perform_async
+    redirect_to securities_path
+  end
+  
+  def search
+    @securities = Security.where('symbol LIKE ?', "#{params[:symbol]}%").first(10)
+    render 'js', template: 'securities/search_drop_down'
+  end
+  
+  
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_security
@@ -69,6 +80,6 @@ class SecuritiesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def security_params
-      params.fetch(:security, {})
+      params.require(:security).permit(:symbol)
     end
 end

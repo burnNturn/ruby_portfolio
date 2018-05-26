@@ -22,16 +22,19 @@
         </ul>
         <ul class="nav navbar-nav navbar-right">
           <div class="container-fluid">
-            <div class="col-md-6">
+            <div  id='quick-quote-form'>
               <%= form_tag'/quick_quote', method: "get", remote: true do %>
-              <li><%= text_field_tag :symbol %></li>
-              <li><%= submit_tag 'Quote' %></li>
+                <li><%= text_field_tag :symbol, nil, :id => 'symbol-search-field' %></li>
+                <li><%= submit_tag 'Quote', :id => 'symbol-search-submit' %></li>
+                <li><div id='quick_quote'></div></li>
               <% end %>
             </div>
-            <div class="col-md-6">
-              <li><div id='quick_quote'></div></li>
-            </div>
           </div>
+            <div class="container-fluid dropdown" id="symbol-search-dropdown">
+                <input type='hidden' id='isHidden' value='true' data-toggle="dropdown"></input>
+                <%= render partial: "securities/search_drop_down" %>
+            </div>
+
           <% if user_signed_in? %>
             <li><p class="navbar-text">Logged in as <strong><%= current_user.email %></strong>.</p></li>
             <% if current_user.try(:admin?) %>

@@ -15,3 +15,16 @@
 //= require jquery_ujs
 //= require jquery-ui
 //= require_tree .
+
+$(document).ready(function(){
+    $('#symbol-search-field').on('input', function(){
+        var sym = $('#symbol-search-field').val();
+        
+        
+        var search = $.ajax({
+            url: 'securities/search',
+            type: 'GET',
+            data: { symbol: sym} 
+        });
+    });
+});

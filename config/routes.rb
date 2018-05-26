@@ -1,4 +1,8 @@
+require 'sidekiq/web'
+
+
 Rails.application.routes.draw do
+  mount Sidekiq::Web, at: "/sidekiq"
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   devise_for :users
   
@@ -15,7 +19,12 @@ Rails.application.routes.draw do
       get 'sale'
     end
   end
-  resources :securities
+  resources :securities do
+    collection do
+      post 'get_list'
+      get :search
+    end
+  end
   
   resources :modules do
     collection do

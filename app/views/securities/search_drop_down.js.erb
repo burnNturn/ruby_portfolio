@@ -1,0 +1,11 @@
+
+var isHidden = document.getElementById('symbol-search-dropdown').className
+if (!isHidden.includes('open')) {
+    $('#symbol-search-results').dropdown('toggle');
+    $('#isHidden').val('false');
+};
+
+$('#symbol-search-results').replaceWith('<%= j render(partial: "securities/search_drop_down") %>' );
+
+
+
