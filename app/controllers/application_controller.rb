@@ -8,7 +8,12 @@ class ApplicationController < ActionController::Base
   end
   
   def get_quick_quote
-    @quote = Intrinio.instance.quick_quote(app_params[:symbol])
+    begin 
+      @security = Security.where(symbol: app_params[:symbol]).first
+    rescue 
+      #TODO
+    end
+    @quote = @security.get_quote
     render 'js', template: 'layouts/get_quick_quote'
   end
   

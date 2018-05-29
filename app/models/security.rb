@@ -10,6 +10,17 @@ class Security < ActiveRecord::Base
     end
     
     
+    def get_quote
+    # if self.needs_update
+    #   self.current_price = Intrinio.instance.quick_quote(self.symbol)
+    # else
+    #   self.current_price
+      
+    # end
+    self.update_security
+    self.current_price
+  end
+    
     protected
     
     def update_security
