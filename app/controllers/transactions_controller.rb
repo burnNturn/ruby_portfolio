@@ -4,7 +4,7 @@ class TransactionsController < ApplicationController
   # GET /transactions
   # GET /transactions.json
   def index
-    @transactions = current_user.transaction
+    @transactions = current_user.transactions
   end
 
   # GET /transactions/1

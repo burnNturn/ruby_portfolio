@@ -1,5 +1,6 @@
 class HoldingsController < ApplicationController
   before_action :set_holding, only: [:show, :edit, :update, :destroy]
+  load_and_authorize_resource
 
   # GET /holdings
   # GET /holdings.json
@@ -32,7 +33,6 @@ class HoldingsController < ApplicationController
   # POST /holdings.json
   def create
     # @portfolio = Portfolio.find(holding_params)
-    byebug
     @holding = current_user.holdings.build(holding_params)
     # @holding = Holding.new(holding_params)
 

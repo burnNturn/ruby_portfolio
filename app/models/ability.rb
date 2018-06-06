@@ -3,12 +3,16 @@ class Ability
 
   def initialize(user)
     user ||= User.new # guest user (not logged in)
+    
+    
     if user && user.admin?
       can :access, :rails_admin  # only allow admin users to access Rails Admin
       can :dashboard
       can :manage, :all
     else
-      
+      can :manage, Portfolio, :user_id => user.id
+      can :manage, Holding, :user_id => user.id
+      can :manage, Transaction, :user_id => user.id
     end
     # Define abilities for the passed in user here. For example:
     #

@@ -18,7 +18,6 @@ class Security < ActiveRecord::Base
     
     
     def update_security
-        byebug
         if self.needs_update or self.current_price.nil?
             data_points = 'name,cik,close_price,last_price'
             options = {query: {identifier: self.symbol, item: data_points}}
