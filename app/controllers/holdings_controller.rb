@@ -6,6 +6,10 @@ class HoldingsController < ApplicationController
   def index
     @holdings = Holding.all
   end
+  
+  def user_index
+    @holdings = Holding.where(user: current_user)
+  end
 
   # GET /holdings/1
   # GET /holdings/1.json

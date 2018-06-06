@@ -35,10 +35,22 @@
  h5 {
  font-weight: bold;
  margin: 15px;
- 
  }
- 
 }
+
+.panel {
+ 
+ 
+ .panel-body {
+  height: 70px;
+  padding: 0px;
+  
+  table {
+   margin: 0px;
+  }
+ }
+}
+
  
 #quick-quote-form {
  width: 70%;

@@ -1,6 +1,6 @@
-<div class="panel panel-default">
+<div class="panel panel-default" id='holding-panel'>
     <div class="panel-body">
-        <table class="table borderless">
+        <table class="table borderless" id='holdings-table'>
             <thead>
                 <tr>
                     <th>Symbol</th>
@@ -9,6 +9,8 @@
                     <th>Total Cost</th>
                     <th>Current Price</th>
                     <th>Current Value</th>
+                    <th>Total Profit</th>
+                    <th>Day % Change</th>
                     <th></th>
                 </tr>
             </thead>
@@ -20,6 +22,8 @@
                     <td><%= holding.cost_basis %></td>
                     <td><%= holding.current_price %></td>
                     <td><%= holding.current_value %></td>
+                    <td><%= holding.current_value - holding.cost_basis %></td>
+                    <td>TODO%</td>
                     <td><%= link_to 'Sell', sale_transactions_path(:holding_id => holding.id) %></td>
                     <td><%= link_to 'Show', holding_path(holding.id) %></td>
                 </tr>
