@@ -31,6 +31,11 @@ class Intrinio
         self.class.get('/companies', options)
     end
     
+    def securities(options = {})
+        merge_auth(options)
+        self.class.get('/securities', options)
+    end
+    
     def multi_quote(symbols)
         
     end

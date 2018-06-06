@@ -7,15 +7,6 @@ class ApplicationController < ActionController::Base
     @current_ability ||= Ability.new(current_user)
   end
   
-  def get_quick_quote
-    begin 
-      @security = Security.where(symbol: app_params[:symbol]).first
-    rescue 
-      #TODO
-    end
-    @quote = @security.get_quote
-    render 'js', template: 'layouts/get_quick_quote'
-  end
   
   def index
     @securities = Security.none

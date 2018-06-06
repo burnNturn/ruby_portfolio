@@ -23,7 +23,7 @@
         <ul class="nav navbar-nav navbar-right">
           <div class="container-fluid">
             <div  id='quick-quote-form'>
-              <%= form_tag'/quick_quote', method: "get", remote: true do %>
+              <%= form_tag get_quick_quote_quotes_path, method: "get", remote: true do %>
                 <li><%= text_field_tag :symbol, nil, :id => 'symbol-search-field' %></li>
                 <li><%= submit_tag 'Quote', :id => 'symbol-search-submit' %></li>
                 <li><div id='quick_quote'></div></li>

@@ -1,4 +1,3 @@
-
-if ('<%= @quote.present? %>') {
+<% if @quote.present? %> 
     $('#quick_quote').html('<p class="navbar-text"><%= "$#{@quote}" %></p>');
-} 
+<% end %> 
