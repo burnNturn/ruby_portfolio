@@ -4,7 +4,7 @@ class HoldingsController < ApplicationController
   # GET /holdings
   # GET /holdings.json
   def index
-    @holdings = Holding.all
+    @holdings = current_user.holdings
   end
   
   def user_index
