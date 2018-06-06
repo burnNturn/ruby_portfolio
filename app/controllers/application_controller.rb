@@ -7,10 +7,6 @@ class ApplicationController < ActionController::Base
     @current_ability ||= Ability.new(current_user)
   end
   
-  def get_quick_quote
-    @quote = Intrinio.instance.quick_quote(app_params[:symbol])
-    render 'js', template: 'layouts/get_quick_quote'
-  end
   
   def index
     @securities = Security.none

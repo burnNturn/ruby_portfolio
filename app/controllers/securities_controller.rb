@@ -61,6 +61,7 @@ class SecuritiesController < ApplicationController
     end
   end
   
+  
   def get_list
     IntrinioWorker.perform_async
     redirect_to securities_path

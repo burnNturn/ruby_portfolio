@@ -32,7 +32,14 @@ Rails.application.routes.draw do
     end
   end
   
-  get '/quick_quote' => 'application#get_quick_quote', as: '/quick_quote'
+  resources :quotes do
+    collection do
+      get 'get_quick_quote'
+    end 
+  end
+  
+  # get '/quick_quote' => 'application#get_quick_quote', as: '/quick_quote'
+  # get '/render_quick_quote' => 'application#render_quick_quote', as: 'render_quick_quote'
   
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
