@@ -43,7 +43,8 @@ class Holding < ActiveRecord::Base
     def update_security
         @security = Security.where(symbol: self.symbol).first
         if @security.present?
-            @security.update
+            @security.update_security
+            self.security_id = @security.id
         else
             @security = Security.create(symbol: self.symbol)
             self.security_id = @security.id
