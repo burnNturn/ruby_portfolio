@@ -18,6 +18,27 @@
  @import "modules";
  @import "transactions";
  
+.moduleContainer {
+ margin: 15px;
+}
+
+.page-title {
+ padding-left: 15px;
+ text-align: left;
+ border-bottom: 1px solid #333e48;
+ font-size: 50px;
+ 
+}
+
+.account-details-item {
+ 
+ h5 {
+ font-weight: bold;
+ margin: 15px;
+ 
+ }
+ 
+}
  
 #quick-quote-form {
  width: 70%;
@@ -48,5 +69,11 @@
  position: relative;
  float: left;
 }
+
+// .page-title {
+//  font-family: 'Audiowide';
+//  font-weight: bold;
+//  padding-left : 50px;
+// }
  
 

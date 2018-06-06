@@ -1,35 +1,48 @@
 <p id="notice"><%= notice %></p>
-
-<div class='col-lg-6 col-sm-12'>
-  <p>
-    <strong>Name:</strong>
-    <%= @portfolio.name %>
-  </p>
-  
-  <p>
-    <strong>Total value:</strong>
-    <%= @portfolio.total_value %>
-  </p>
-  
-  <p>
-    <strong>Equities value:</strong>
-    <%= @portfolio.equities_value %>
-  </p>
-  
-  <p>
-    <strong>Cash balance:</strong>
-    <%= @portfolio.cash_balance %>
-  </p>
-  
-  <%= link_to 'Add Transaction', purchase_transactions_path(:portfolio_id => @portfolio.id) %>
-  <%= link_to 'Add Holding', new_holding_path(:portfolio_id => @portfolio.id) %>
-  <%= link_to 'Edit', edit_portfolio_path(@portfolio) %> |
-  <%= link_to 'Back', portfolios_path %>
-</div>
-
-<div class='col-lg-6 col-sm-12'>
+<div class="moduleContainer">
+  <div class="row title-row">
+    <div class="col-12">
+      <h1 class='page-title' id='portfolio-title'><%= @portfolio.name %></h1>
+    </div>
+  </div>
+  <div class='row' id='account-metrics'>
+    <div class='col-lg-6 col-sm-12 account-metric' id='account-details'>
+      <h2>Account Details</h2>
+      <div class='row account-details-item' id='portfolio-cash-balance'>
+        <h5>Total Cash: $<%= @portfolio.cash_balance %></h5>
+      </div>
+      <div class='row account-details-item' id='portfolio-securities-value'>
+        <h5>Securities Valule: $<%= @portfolio.equities_value %></h5>
+      </div>
+      <div class='row account-details-item' id='portfolio-total_value'>
+        <h5>Total Value: $<%= @portfolio.total_value %></h5>
+      </div>
+      <%= link_to 'Add Transaction', purchase_transactions_path(:portfolio_id => @portfolio.id) %>
+      <%= link_to 'Add Holding', new_holding_path(:portfolio_id => @portfolio.id) %>
+      <%= link_to 'Edit', edit_portfolio_path(@portfolio) %> |
+      <%= link_to 'Back', portfolios_path %>
+    </div> 
+    <div class='col-lg-6 col-sm-12 account-metric' id='account-performance'>
+      <h2>Performance</h2>
+      <div class='row account-details-item' id='portfolio-ytd-profit'>
+        <h5>YTD Profit: TODO%</h5>
+      </div>
+      <div class='row account-details-item' id='portfolio-ytd-perc'>
+        <h5>YTD %: TODO%</h5>
+      </div>
+      <div class='row account-details-item' id='portfolio-annualized'>
+        <h5>Annualized %: TODO%</h5>
+      </div>
+      <div class='row account-details-item' id='portfolio-avg-perc'>
+        <h5>Average %: TODO%</h5>
+      </div>
+    </div>
+  </div>
+  <div class='row'>
     <h2>Holdings</h2>
     <%= link_to 'Add a Holding', new_holding_path %>
     <%= render @holdings %>
+  </div>
 </div>
+
 
