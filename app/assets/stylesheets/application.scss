@@ -29,6 +29,17 @@
   margin-bottom: 10px;
 }
 
+.col-container {
+ display: table;
+ width: 100%;
+}
+
+.col-cell {
+ display: table-cell !important;
+ height: 100%;
+ float: none;
+}
+
 
 .page-title {
  
@@ -54,7 +65,6 @@
 }
 
 .portfolio-panel, .holding-panel {
- 
  
  .panel-body {
   height: 70px;
