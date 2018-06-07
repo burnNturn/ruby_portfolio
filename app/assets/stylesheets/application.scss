@@ -22,12 +22,38 @@
  margin: 15px;
 }
 
+
+.bottom-border {
+  padding-left: 15px;
+  border-bottom: 1px solid #333e48;
+  margin-bottom: 10px;
+}
+
+.col-container {
+ display: table;
+ width: 100%;
+}
+
+.col-cell {
+ display: table-cell !important;
+ height: 100%;
+ float: none;
+}
+
+
 .page-title {
- padding-left: 15px;
- text-align: left;
- border-bottom: 1px solid #333e48;
- font-size: 50px;
  
+ text-align: left;
+ margin-bottom: 5px;
+ font-size: 50px;
+ line-height: 100%;
+ 
+}
+
+.page-subtitle {
+ margin-left: 5px;
+ margin-top: 0px;
+ line-height: 85%;
 }
 
 .account-details-item {
@@ -38,8 +64,7 @@
  }
 }
 
-.panel {
- 
+.portfolio-panel, .holding-panel {
  
  .panel-body {
   height: 70px;

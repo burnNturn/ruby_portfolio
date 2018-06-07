@@ -1,61 +1,73 @@
 <p id="notice"><%= notice %></p>
+<div class="moduleContainer">
+    <div class="row bottom-border title-row">
+        <div class="col-12">
+          <h1 class='page-title' id='holding-title'><%= @holding.security.description %></h1>
+          <h5 class='page-subtitle'><%= @holding.asset_class.upcase + ': ' + @holding.symbol %></h5>
+        </div>
+    </div>
+    <div class='row bottom-border' id='holding-data'>
+        <div class='col-lg-6 col-sm-12 account-metric' id='holding-details'>
+            <div class='col-lg-6 col-md-6 col-sm-6 col-xs-6'>
+              <div class='row account-details-item' id='portfolio-name'>
+                    <h5>Portfolio: <%= @holding.portfolio.name %></h5>
+              </div> 
+              <div class='row account-details-item' id='holding-date-opened'>
+                    <h5>Date Opened: <%= @holding.date_opened %></h5>
+              </div>
+              <div class='row account-details-item' id='shares-owned'>
+                    <h5>Shares Owned: <%= @holding.quantity %></h5>
+              </div>
+              <div class='row account-details-item' id='avg-cost'>
+                    <h5>Price paid /share: $<%= @holding.avg_price %></h5>
+              </div>
+              <div class='row account-details-item' id='cost-basis'>
+                    <h5>Cost Basis: $<%= @holding.cost_basis %></h5>
+              </div>
+              <div class='row account-details-item' id='current-price'>
+                    <h5>Current Price: $<%= @holding.current_price %></h5>
+              </div>
+              <div class='row account-details-item' id='current-value'>
+                    <h5>Current Value: $<%= @holding.current_value %></h5>
+              </div> 
+            </div>
+            <div class='col-lg-6 col-md-6 col-sm-6 col-xs-6'>
+                <div class='row account-details-item' id='profit'>
+                    <h5>Gain/Loss: $<%= @holding.current_value - @holding.cost_basis %></h5>
+                </div>
+                <div class='row account-details-item' id='perc-change'>
+                    <h5>% Change: TODO%</h5>
+                </div>
+                <div class='row account-details-item' id='-day-perc-change'>
+                    <h5>Day % Change: TODO%</h5>
+                </div>
+            </div>
+            <%= link_to 'Buy', purchase_transactions_path(:holding_id => @holding.id) %> | 
+            <%= link_to 'Sell', sale_transactions_path(:holding_id => @holding.id) %> | 
+            <%= link_to 'Edit', edit_holding_path(@holding) %> | 
+            <%= link_to 'Back', holdings_path %>
+        </div>
+        <div class='col-lg-6 col-sm-12 account-metric' id='holding-graph'>
+            TODO: A Graph Will Go Here
+        </div>
+    </div>
 
-<p>
-    <strong>Portfolio</strong>
-    <%= @holding.portfolio.name %>
-</p>
-<p>
-    <strong>Symbol</strong>
-    <%= @holding.symbol %>
-</p>
-<p>
-    <strong>Asset Class</strong>
-    <%= @holding.asset_class %>
-</p>
-<p>
-    <strong>Quantity</strong>
-    <%= @holding.quantity %>
-</p>
-<p>
-    <strong>Date Opened</strong>
-    <%= @holding.date_opened %>
-</p>
-<p>
-    <strong>Average Price</strong>
-    <%= @holding.avg_price %>
-</p>
-<p>
-    <strong>Cost Basis</strong>
-    <%= @holding.cost_basis %>
-</p>
-<p>
-    <strong>Current Price</strong>
-    <%= @holding.current_price %>
-</p>
-<p>
-    <strong>Current Value</strong>
-    <%= @holding.current_value %>
-</p>
-
-<%= link_to 'Buy', purchase_transactions_path(:holding_id => @holding.id) %> | 
-<%= link_to 'Sell', sale_transactions_path(:holding_id => @holding.id) %> | 
-<%= link_to 'Edit', edit_holding_path(@holding) %> | 
-<%= link_to 'Back', holdings_path %>
-
-<table>
-  <thead>
-    <tr>
-      <th>Date</th>
-      <th>Activity</th>
-      <th>Quantity</th>
-      <th>Symbol</th>
-      <th>Description</th>
-      <th>Price</th>
-      <th>Commission</th>
-      <th>Fees</th>
-      <th>Amount</th>
-    </tr>
-  </thead>
-<% @transactions = @holding.transactions %>
-<%= render @transactions %>
-</table>
+    <table>
+      <thead>
+        <tr>
+          <th>Date</th>
+          <th>Activity</th>
+          <th>Quantity</th>
+          <th>Symbol</th>
+          <th>Description</th>
+          <th>Price</th>
+          <th>Commission</th>
+          <th>Fees</th>
+          <th>Amount</th>
+        </tr>
+      </thead>
+    <% @transactions = @holding.transactions %>
+    <%= render @transactions %>
+    </table>
+</div>
+</div>

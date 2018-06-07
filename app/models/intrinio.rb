@@ -11,17 +11,25 @@ class Intrinio
     end
     
     def quick_quote(symbol)
-        options = {query: {identifier: symbol, item: 'last_price'}}
-        data_point(options).parsed_response["value"]
-        
+        data_point_filtered(symbol, 'last_price').parsed_response["value"]
     end
     
-    def data_point(options = {})
+    
+    def data_point_filtered(symbol, items)
+        options = {query: {identifier: symbol, item: items}}
         merge_auth(options)
         self.class.get('/data_point', options)
     end
     
-    def prices(symbol, options = {})
+    def data_point(symbol)
+        options = {query: {identifier: symbol}}
+        merge_auth(options)
+        self.class.get('/data_point', options)
+    end
+    
+    
+    def prices(symbols, items, formatted_date)
+        options = {query: {identifier: symbols, item: items, start_date: formatted_date}}
         merge_auth(options)
         self.class.get('/prices', options)
     end

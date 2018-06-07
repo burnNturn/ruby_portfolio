@@ -4,6 +4,7 @@ class Holding < ActiveRecord::Base
     
     belongs_to :user
     belongs_to :portfolio
+    belongs_to :security
     
     has_many :transactions
     
@@ -44,10 +45,10 @@ class Holding < ActiveRecord::Base
         @security = Security.where(symbol: self.symbol).first
         if @security.present?
             @security.update_security
-            self.security_id = @security.id
+            self.security = @security
         else
             @security = Security.create(symbol: self.symbol)
-            self.security_id = @security.id
+            self.security = @security
         end
         
         
