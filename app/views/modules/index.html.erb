@@ -1,22 +1,56 @@
-<div class='col-lg-6 col-sm-12' class='portfolio-cards'>
-    <h2>Portfolios</h2>
-    <%= link_to 'Add a Portfolio', new_portfolio_path %>
-    <%= render @portfolios %>
-    <div id='totals-card'>
-            <table class='table'>
-                <tbody>
-                    <tr>
-                        <th width='150px'>Totals</th>
-                        <th width='160px'><%= @portfolios.sum("total_value") %></th>
-                        <th width='223px'><%= @portfolios.sum("equities_value") %></th>
-                        <th width='196px'><%= @portfolios.sum("cash_balance") %></th>
-                    </tr>
-                </tbody>
-            </table>
+<div class="moduleContainer">
+    <div class="row bottom-border">
+        <div class='col-lg-6 col-sm-12'>
+            <div class='panel panel-default'>
+                <div class='panel-body'>
+                    <h3 class='bottom-border'>Summary</h3>
+                    <div class='col-lg-6 col-sm-12 account-metric'>
+                    <h6>Total Net Worth: <%= @portfolios.sum("total_value") %></h6>
+                    <h6>Total Securities Value: <%= @portfolios.sum("equities_value") %></h6>
+                    <h6>Total Cash: <%= @portfolios.sum("cash_balance") %></h6>
+                </div>
+                <div class='col-lg-6 col-sm-12 account-metric'>
+                    <h6>Today's Gain/Loss: $TODO</h6>
+                    <h6>Today's %: TODO%</h6>
+                    <h6>YTD Gain/Loss: $TODO</h6>
+                    <h6>YTD %: TODO%</h6>
+                </div>
+            </div>
+            <div class='panel panel-default'>
+                <div class='panel-body'>
+                    <div class='col-lg-6 col-sm-12'>
+                        <h3 class='bottom-border'>Markets</h3>
+                        <h6>You</h6>
+                        <h6>DOW</h6>
+                        <h6>S&P 500</h6>
+                        <h6>NASDAQ</h6>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-</div>
-<div class='col-lg-6 col-sm-12'>
-    <h2>Holdings</h2>
-    <%= link_to 'Add a Holding', new_holding_path %>
-    <%= render @holdings %>
+    <div class='row' id='portfolios-data'>
+        <div class='col-lg-6 col-sm-12' class='portfolio-cards'>
+            <h2>Portfolios</h2>
+            <%= link_to 'Add a Portfolio', new_portfolio_path %>
+            <%= render @portfolios %>
+            <div id='totals-card'>
+                <table class='table'>
+                    <tbody>
+                        <tr>
+                            <th width='150px'>Totals</th>
+                            <th width='160px'><%= @portfolios.sum("total_value") %></th>
+                            <th width='223px'><%= @portfolios.sum("equities_value") %></th>
+                            <th width='196px'><%= @portfolios.sum("cash_balance") %></th>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class='col-lg-6 col-sm-12'>
+            <h2>Holdings</h2>
+            <%= link_to 'Add a Holding', new_holding_path %>
+            <%= render @holdings %>
+        </div>
+    </div>
 </div>

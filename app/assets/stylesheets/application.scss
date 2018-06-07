@@ -26,15 +26,16 @@
 .bottom-border {
   padding-left: 15px;
   border-bottom: 1px solid #333e48;
+  margin-bottom: 10px;
 }
 
 
 .page-title {
  
  text-align: left;
- margin-bottom: 0px;
+ margin-bottom: 5px;
  font-size: 50px;
- line-height: 85%;
+ line-height: 100%;
  
 }
 
@@ -52,7 +53,7 @@
  }
 }
 
-.panel {
+.portfolio-panel, .holding-panel {
  
  
  .panel-body {
