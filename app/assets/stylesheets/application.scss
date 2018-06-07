@@ -22,12 +22,26 @@
  margin: 15px;
 }
 
+
+.bottom-border {
+  padding-left: 15px;
+  border-bottom: 1px solid #333e48;
+}
+
+
 .page-title {
- padding-left: 15px;
- text-align: left;
- border-bottom: 1px solid #333e48;
- font-size: 50px;
  
+ text-align: left;
+ margin-bottom: 0px;
+ font-size: 50px;
+ line-height: 85%;
+ 
+}
+
+.page-subtitle {
+ margin-left: 5px;
+ margin-top: 0px;
+ line-height: 85%;
 }
 
 .account-details-item {

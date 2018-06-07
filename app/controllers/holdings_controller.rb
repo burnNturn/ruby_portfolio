@@ -15,6 +15,11 @@ class HoldingsController < ApplicationController
   # GET /holdings/1
   # GET /holdings/1.json
   def show
+    if !Security.exists?(@holding.security_id) 
+      @security = Security.where(symbol: @holding.symbol).first
+      @holding.security_id = @security.id
+      @holding.save
+    end
   end
 
   # GET /holdings/new
@@ -79,7 +84,7 @@ class HoldingsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def holding_params
-      params.require(:holding).permit(:holding, :portfolio_id, :symbol, :asset_class, 
+      params.require(:holding).permit(:holding, :portfolio_id, :security_id, :symbol, :asset_class, 
         :quantity, :date_opened, :cost_basis, :avg_price)
     end
     
