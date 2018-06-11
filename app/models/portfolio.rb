@@ -6,6 +6,7 @@ class Portfolio < ActiveRecord::Base
     has_many :transactions
     validates :user_id, presence: true
     
+    
     def calculate_total_value
         self.total_value = self.equities_value + self.cash_balance
     end
@@ -26,7 +27,12 @@ class Portfolio < ActiveRecord::Base
         self.beg_year_balance
     end
     
-    def get_ytd_perc
-        
+    def ytd_change
+        self.total_value - self.beg_year_balance
+    end
+    
+    def ytd_perc
+        ytd_perc = (ytd_change / self.beg_year_balance) * 100
+        ytd_perc.round(2)
     end
 end
