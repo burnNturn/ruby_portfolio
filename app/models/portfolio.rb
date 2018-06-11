@@ -17,4 +17,16 @@ class Portfolio < ActiveRecord::Base
         end
         self.equities_value
     end
+    
+    def get_beg_quarter_balance
+        self.beg_quarter_balance
+    end
+    
+    def get_beg_year_balance
+        self.beg_year_balance
+    end
+    
+    def get_ytd_perc
+        
+    end
 end
