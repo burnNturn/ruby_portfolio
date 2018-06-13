@@ -5,7 +5,7 @@ class Holding < ActiveRecord::Base
     belongs_to :user
     belongs_to :portfolio
     belongs_to :security
-    
+
     has_many :transactions
     
     @@current_price_var = BigDecimal.new("0.00")
@@ -14,11 +14,11 @@ class Holding < ActiveRecord::Base
     # end
     
     def current_price
-        @@current_price_var = Intrinio.instance.quick_quote(self.symbol)
+        @@current_price_var = self.security.get_quote
     end
     
     def current_value
-        self.quantity * @@current_price_var.to_d
+        self.quantity * current_price.to_d
     end
     
     def buy_holding(qty_bought, cost_of_bought)

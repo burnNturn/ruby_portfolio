@@ -25,10 +25,10 @@
     <div class='col-lg-6 col-sm-12 account-metric' id='account-performance'>
       <h2>Performance</h2>
       <div class='row account-details-item' id='portfolio-ytd-profit'>
-        <h5>YTD Profit: TODO%</h5>
+        <h5>YTD $ Change: $<%= @portfolio.ytd_change %></h5>
       </div>
       <div class='row account-details-item' id='portfolio-ytd-perc'>
-        <h5>YTD %: TODO%</h5>
+        <h5>YTD %: <%= @portfolio.ytd_perc %>%</h5>
       </div>
       <div class='row account-details-item' id='portfolio-annualized'>
         <h5>Annualized %: TODO%</h5>

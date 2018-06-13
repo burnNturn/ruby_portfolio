@@ -1,6 +1,8 @@
 class Security < ActiveRecord::Base
     has_many :holding
     
+    has_many :holdings 
+    
     def load_security(company)
         self.asset_class = 'stock'
         self.symbol = company['ticker']
