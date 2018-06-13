@@ -1,4 +1,5 @@
 class Security < ActiveRecord::Base
+    has_many :holding
     
     has_many :holdings 
     
@@ -23,7 +24,7 @@ class Security < ActiveRecord::Base
         if self.needs_update or self.current_price.nil?
             data_points = 'name,cik,close_price,last_price'
             options = {query: {identifier: self.symbol, item: data_points}}
-            company = Intrinio.instance.data_point(options).parsed_response["data"]
+            company = Intrinio.instance.data_point_filtered(symbol, data_points).parsed_response["data"]
             stock = Hash.new
             company.each do |item|
                 stock[item["item"]] = item["value"]
