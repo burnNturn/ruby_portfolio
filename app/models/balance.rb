@@ -8,27 +8,28 @@ class Balance < ActiveRecord::Base
     
     def set_date_frames
         
-        today = Date.today
         
-        if today.yday == 1
+
+        
+        if self.date.yday == 1
             self.yearly = true
         else
             self.yearly = false
         end
         
-        if today == today.beginning_of_quarter
+        if self.date == self.date.beginning_of_quarter
             self.quarterly = true
         else
             self.quarterly = false
         end
         
-        if today.mday == 1
+        if self.date.mday == 1
             self.monthly = true
         else
             self.monthly = false
         end
         
-        if today.wday == 1
+        if self.date.wday == 1
             self.weekly = true
         else
             self.weekly = false
