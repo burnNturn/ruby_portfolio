@@ -7,6 +7,10 @@ class Portfolio < ActiveRecord::Base
     has_many :balances
     validates :user_id, presence: true
     
+    def update_balance(amount)
+        self.cash_balance += amount
+        self.save
+    end
     
     def calculate_total_value
         self.total_value = self.equities_value + self.cash_balance

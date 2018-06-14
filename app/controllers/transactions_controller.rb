@@ -88,6 +88,12 @@ class TransactionsController < ApplicationController
     @holding = Holding.where(id:params[:holding_id]).first
     @transaction = Transaction.new
   end
+  
+  def import
+    @portfolio = Portfolio.where(id:params[:portfolio_id]).first
+    Transaction.import(params[:file], @portfolio)
+    redirect_to root_url, notice: "Activity Data imported"
+  end
 
   private
     # Use callbacks to share common setup or constraints between actions.
@@ -97,7 +103,7 @@ class TransactionsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def transaction_params
-      params.require(:transaction).permit(:transaction, :portfolio_id, :holding_id, :date, 
+      params.require(:transaction).permit(:user_id, :transaction, :portfolio_id, :holding_id, :date, 
         :activity, :quantity, :symbol, :description, :price, :commission, :fees, :amount)
     end
 end

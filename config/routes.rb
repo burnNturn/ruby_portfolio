@@ -17,6 +17,7 @@ Rails.application.routes.draw do
     collection do
       get 'purchase'
       get 'sale'
+      post 'import'
     end
   end
   resources :securities do
