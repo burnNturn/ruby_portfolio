@@ -18,6 +18,11 @@
         <h5>Total Value: $<%= @portfolio.total_value %></h5>
       </div>
       <%= link_to 'Add Transaction', purchase_transactions_path(:portfolio_id => @portfolio.id) %>
+      <%= form_tag import_transactions_path, multipart: true do %>
+        <%= hidden_field_tag :portfolio_id, @portfolio.id %>
+        <%= file_field_tag :file %>
+        <%= submit_tag "Import Transactions CSV" %>
+      <% end %>
       <%= link_to 'Add Holding', new_holding_path(:portfolio_id => @portfolio.id) %>
       <%= link_to 'Edit', edit_portfolio_path(@portfolio) %> |
       <%= link_to 'Back', portfolios_path %>
