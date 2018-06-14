@@ -38,6 +38,22 @@ class Security < ActiveRecord::Base
         end
     end
     
+    def update_security_hard
+        data_points = 'name,cik,close_price,last_price'
+        options = {query: {identifier: self.symbol, item: data_points}}
+        company = Intrinio.instance.data_point_filtered(symbol, data_points).parsed_response["data"]
+        stock = Hash.new
+        company.each do |item|
+            stock[item["item"]] = item["value"]
+        end
+        self.description = stock['name']
+        self.identifier = stock['cik']
+        self.previous_close = stock['close_price']
+        self.current_price = stock['last_price']
+        self.last_api_call = Time.now()
+        self.save
+    end
+    
     
     protected
     

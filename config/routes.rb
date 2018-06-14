@@ -38,6 +38,8 @@ Rails.application.routes.draw do
     end 
   end
   
+  resources :balances 
+  
   # get '/quick_quote' => 'application#get_quick_quote', as: '/quick_quote'
   # get '/render_quick_quote' => 'application#render_quick_quote', as: 'render_quick_quote'
   
