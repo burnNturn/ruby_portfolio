@@ -15,6 +15,7 @@ class Transaction < ActiveRecord::Base
         CSV.foreach(file.path, headers: true) do |row|
             hash = row.to_hash
             hash[:portfolio_id] = portfolio.id
+            hash[:user_id] = portfolio.user.id
             Transaction.create! hash
         end
     end
@@ -64,8 +65,12 @@ class Transaction < ActiveRecord::Base
     def update_portfolio_balance
         if self.activity == 'Buy' or self.activity == 'Withdraw'
            self.portfolio.update_balance(self.amount * -1)
+           self.debit = self.amount * -1
+           self.balance = self.portfolio.cash_balance
         elsif self.activity == 'Sell' or self.activity == 'Contribution' or self.activity == 'Dividend'
             self.portfolio.update_balance(self.amount)
+            self.credit = self.amount
+            self.balance = self.portfolio.cash_balance
         end
     end
     
