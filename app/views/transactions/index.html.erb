@@ -24,21 +24,15 @@
   <tbody>
     <% @transactions.each do |transaction| %>
       <tr>
-        <td><%= transaction.user.email %></td>
+        <td><%= transaction.user.id %></td>
         <td><%= transaction.portfolio_id %></td>
-        <td><%= transaction.holding %></td>
         <td><%= transaction.date %></td>
         <td><%= transaction.activity %></td>
-        <td><%= transaction.quantity %></td>
-        <td><%= transaction.symbol %></td>
         <td><%= transaction.description %></td>
-        <td><%= transaction.price %></td>
-        <td><%= transaction.commission %></td>
-        <td><%= transaction.fees %></td>
-        <td><%= transaction.amount %></td>
-        <td><%= link_to 'Show', transaction %></td>
-        <td><%= link_to 'Edit', edit_transaction_path(transaction) %></td>
-        <td><%= link_to 'Destroy', transaction, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= transaction.debit %></td>
+        <td><%= transaction.credit %></td>
+        <td><%= transaction.balance %></td>
+
       </tr>
     <% end %>
   </tbody>
