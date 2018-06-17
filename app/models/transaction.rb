@@ -57,7 +57,7 @@ class Transaction < ActiveRecord::Base
         if self.symbol.nil?
             self.description = self.activity + " of " + self.amount.to_s
         else
-            self.description = self.activity + " " + self.quantity.to_s + " shares of" + 
+            self.description = self.activity + " " + self.quantity.to_s + " shares of " + 
             self.symbol + " @ " + self.price.to_s
         end
     end

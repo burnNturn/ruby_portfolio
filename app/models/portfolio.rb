@@ -13,7 +13,7 @@ class Portfolio < ActiveRecord::Base
     end
     
     def calculate_total_value
-        self.total_value = self.equities_value + self.cash_balance
+        self.total_value = self.calculate_equities_value + self.cash_balance
     end
     
     def calculate_equities_value

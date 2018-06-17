@@ -12,8 +12,8 @@
         <% @portfolios.each do |portfolio| %>
       <tr>
         <td><%= portfolio.name %></td>
-        <td><%= portfolio.total_value %></td>
-        <td><%= portfolio.equities_value %></td>
+        <td><%= portfolio.calculate_total_value %></td>
+        <td><%= portfolio.calculate_equities_value %></td>
         <td><%= portfolio.cash_balance %></td>
         <td><%= link_to 'Show', portfolio %></td>
         <td><%= link_to 'Edit', edit_portfolio_path(portfolio) %></td>
