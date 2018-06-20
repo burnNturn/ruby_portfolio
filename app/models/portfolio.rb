@@ -1,11 +1,16 @@
 class Portfolio < ActiveRecord::Base
-    before_save :calculate_total_value
+    before_create :calculate_total_value
+    after_find :update_portfolio
     
     belongs_to :user
     has_many :holdings
     has_many :transactions
     has_many :balances
     validates :user_id, presence: true
+    
+    def update_portfolio
+        calculate_total_value
+    end
     
     def update_balance(amount)
         self.cash_balance += amount
