@@ -13,8 +13,8 @@
             <tbody>
                 <tr>
                     <th class='th portfolio-name'><%= portfolio.name %></th>
-                    <td class='td portfolio-value'><%= portfolio.calculate_total_value %></td>
-                    <td class='td portfolio-equities'><%= portfolio.calculate_equities_value %></td>
+                    <td class='td portfolio-value'><%= portfolio.total_value %></td>
+                    <td class='td portfolio-equities'><%= portfolio.equities_value %></td>
                     <td class='td portfolio-cash'><%= portfolio.cash_balance %></td>
                     <td><%= link_to 'Show', portfolio_path(portfolio.id) %></td>
                 </tr>
