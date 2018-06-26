@@ -43,6 +43,11 @@ class Portfolio < ActiveRecord::Base
         self.total_value - self.beg_year_balance
     end
     
+    def get_todays_beg_balance
+       todays_balance = self.balances.where(date: Date.current).first
+       todays_balance.value
+    end
+    
     def ytd_perc
         ytd_perc = (ytd_change / self.beg_year_balance) * 100
         ytd_perc.round(2)
