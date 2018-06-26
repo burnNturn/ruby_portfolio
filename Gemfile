@@ -56,6 +56,8 @@ gem 'zeus', '~> 0.15.14'
 # httparty for api calls
 gem 'httparty'
 
+gem 'xirr'
+
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 

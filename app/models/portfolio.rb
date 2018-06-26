@@ -1,4 +1,6 @@
 class Portfolio < ActiveRecord::Base
+    include Xirr
+    
     before_create :calculate_total_value
     after_find :update_portfolio
     
@@ -44,5 +46,46 @@ class Portfolio < ActiveRecord::Base
     def ytd_perc
         ytd_perc = (ytd_change / self.beg_year_balance) * 100
         ytd_perc.round(2)
+    end
+    
+    def ytd_xirr
+        cf = Cashflow.new
+        
+        if self.beg_year_balance > 0
+            cf << Transaction.new(portfolio.beg_year_balance * -1, date: Date.today.beginning_of_year)
+            puts (portfolio.beg_year_balance * -1).to_s + ', date:' + Date.today.beginning_of_year.to_s
+        end
+        
+        self.contributions.each do |transaction|
+            amount = 0
+            if !transaction.debit.nil?
+                amount = transaction.debit
+            elsif !transaction.credit.nil?
+                amount = transaction.credit
+            else
+                amount = 0
+            end
+            if amount.nil?
+            end
+            cf << Transaction.new(amount * -1, date: transaction.date)
+            puts (amount * -1).to_s + ', date:' + transaction.date.to_s 
+        end
+        
+        @balances = self.balances
+        @end_of_year_balance = @balances.where(:yearly => true, :date => Date.today.beginning_of_year).first
+        cf << Transaction.new(@end_of_year_balance.value, date: Date.today.beginning_of_year.yesterday)
+        puts (@end_of_year_balance.value).to_s + ', date:' + Date.today.beginning_of_year.yesterday.to_s
+        
+        cf.xirr * 100
+    end
+    
+    def contributions
+        contributions = []
+        self.transactions.each do |transaction|
+            if transaction.activity == "Contribution" or transaction.activity == "Withdraw"
+                contributions << transaction
+            end
+        end
+        contributions
     end
 end
