@@ -45,7 +45,12 @@ class Portfolio < ActiveRecord::Base
     
     def get_todays_beg_balance
        todays_balance = self.balances.where(date: Date.current).first
-       todays_balance.value
+        if todays_balance.present?
+            todays_balance.value
+        else
+            nil
+        end
+        
     end
     
     def ytd_perc

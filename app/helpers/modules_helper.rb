@@ -4,7 +4,11 @@ module ModulesHelper
        beg_sum = 0
        current_sum = 0
        @portfolios.each do |portfolio|
-           beg_sum += portfolio.get_todays_beg_balance
+            if portfolio.get_todays_beg_balance.present?
+                beg_sum += portfolio.get_todays_beg_balance
+            else
+                beg_sum += 0
+            end
            current_sum += portfolio.total_value
        end
        
