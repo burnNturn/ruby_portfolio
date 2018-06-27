@@ -1,4 +1,20 @@
 module ModulesHelper
+   
+    def get_user_daily_change
+       beg_sum = 0
+       current_sum = 0
+       @portfolios.each do |portfolio|
+            if portfolio.get_todays_beg_balance.present?
+                beg_sum += portfolio.get_todays_beg_balance
+            else
+                beg_sum += 0
+            end
+           current_sum += portfolio.total_value
+       end
+       
+       @user_daily_change = ((current_sum - beg_sum) / beg_sum) * 100 
+    end
+    
     def get_indicies
         intrinio = Intrinio.instance
         
