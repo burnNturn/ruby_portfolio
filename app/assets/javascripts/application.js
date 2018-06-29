@@ -16,6 +16,7 @@
 //= require jquery-ui
 //= require_tree .
 
+
 $(document).ready(function(){
     $('#symbol-search-field').on('input', function(){
         var sym = $('#symbol-search-field').val();
@@ -28,3 +29,12 @@ $(document).ready(function(){
         });
     });
 });
+
+function getAbsolutePath() {
+    var pathArray = window.location.pathname.split( '/' );
+    return pathArray[pathArray.length -1]
+    
+    // var loc = window.location;
+    // var pathName = loc.pathname.substring(0, loc.pathname.lastIndexOf('/') + 1);
+    // return loc.href.substring(0, loc.href.length - ((loc.pathname + loc.search + loc.hash).length - pathName.length));
+}

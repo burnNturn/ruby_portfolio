@@ -10,6 +10,7 @@ class SecuritiesController < ApplicationController
   # GET /securities/1
   # GET /securities/1.json
   def show
+    @security.update_security
   end
 
   # GET /securities/new
@@ -70,6 +71,12 @@ class SecuritiesController < ApplicationController
   def search
     @securities = Security.where('symbol LIKE ?', "#{params[:symbol]}%").first(10)
     render 'js', template: 'securities/search_drop_down'
+  end
+  
+  def load_institutional_holders
+      @security = Security.find(params[:id])
+      @holders = @security.institutional_holders
+      render 'js', template: 'securities/institutional_holders_table'
   end
   
   

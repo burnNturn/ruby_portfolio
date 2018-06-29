@@ -1,5 +1,38 @@
 <p id="notice"><%= notice %></p>
 
+<div class="moduleContainer">
+    <div class="row bottom-border title-row">
+        <div class="col-12">
+          <h1 class='page-title' id='security-title'><%= @security.description %></h1>
+          <h5 class='page-subtitle'><%= @security.asset_class.upcase + ': ' + @security.symbol %></h5>
+        </div>
+    </div>
+    <div class="row security-price-row">
+        <h1 class='security-price'><strong>$<%= @security.current_price %></strong></h1>
+    </div>
+    <div class='row security-summary-chart-row'>
+        <div class='col-lg-6 col-sm-12 security-summary' id='security-summary'>
+            <%= render 'security_summary_table' %>
+        </div>
+        <div class='col-lg-6 col-sm-12 security-chart' id='security-chart'>
+            <%= render 'security_chart' %>
+        </div>
+    </div>
+    <div class='row institutional-holders'>
+        <table id='institutional-holders-table'></table>
+        <script>
+            $(document).ready(function() {
+                var security = getAbsolutePath();
+                $.ajax({
+                    url: 'load_institutional_holders',
+                    type: 'get',
+                    data: { id: security }
+                })
+            });
+        </script>
+    </div>
+</div>
+
 <strong>Symbol</strong> <%= @security.symbol %><br>
 <strong>Company</strong> <%= @security.description %><br>
 <strong>CIK</strong> <%= @security.identifier %><br>

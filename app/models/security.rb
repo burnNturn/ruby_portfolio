@@ -54,6 +54,18 @@ class Security < ActiveRecord::Base
         self.save
     end
     
+    def institutional_holders
+        sym = self.symbol
+        @holders = Intrinio.instance.institutional_holders(sym).parsed_response["data"]
+        
+        # @holders = Hash.new
+        # company.each do |item|
+        #     @holders[item["item"]] = item["value"]
+        # end
+        # @holders
+        
+    end
+    
     
     protected
     

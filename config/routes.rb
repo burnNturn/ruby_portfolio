@@ -24,6 +24,7 @@ Rails.application.routes.draw do
     collection do
       post 'get_list'
       get :search
+      get :load_institutional_holders
     end
   end
   

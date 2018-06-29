@@ -1,0 +1,16 @@
+<table id='institutional_holders_table'>
+    <thead>
+        <th>Holder</th>
+        <th>Shares</th>
+        <th>Value</th>
+    </thead>
+    <tbody>
+        <% @holders.each do |holder| %>
+            <tr>
+                <td><%= holder["owner_name"] %></td>
+                <td><%= holder["amount"] %></td>
+                <td><%= holder["value"] %></td>
+            </tr>
+        <% end %>
+    </tbody>
+</table>

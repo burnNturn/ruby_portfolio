@@ -44,6 +44,12 @@ class Intrinio
         self.class.get('/securities', options)
     end
     
+    def institutional_holders(symbol)
+        options = {query: {identifier: symbol}}
+        merge_auth(options)
+        self.class.get('/securities/institutional_ownership', options)
+    end
+    
     def multi_quote(symbols)
         
     end
