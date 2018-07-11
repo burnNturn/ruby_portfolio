@@ -25,6 +25,8 @@ Rails.application.routes.draw do
       post 'get_list'
       get :search
       get :load_institutional_holders
+      get :load_earnings_chart
+      
     end
   end
   

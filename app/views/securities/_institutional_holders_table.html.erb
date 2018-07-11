@@ -5,7 +5,7 @@
         <th>Value</th>
     </thead>
     <tbody>
-        <% @holders.each do |holder| %>
+        <% @holders.first(10).each do |holder| %>
             <tr>
                 <td><%= holder["owner_name"] %></td>
                 <td><%= holder["amount"] %></td>

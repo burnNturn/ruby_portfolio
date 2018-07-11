@@ -57,6 +57,8 @@ gem 'zeus', '~> 0.15.14'
 gem 'httparty'
 
 gem 'xirr'
+gem 'chartkick'
+gem 'chart-js-rails'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development

@@ -5,7 +5,20 @@
 #security-summary-table {
     text-align: left;
     th, td {
-    padding: 5px;
-    text-align: left;
+        padding: 5px;
+        text-align: left;
+    }
 }
+
+#institutional_holders_table {
+    td {
+        border-bottom: 2px;
+    }
+}
+
+#earnings_chart {
+    float: left;
+    position: relative;
+    width:  400px;
+    height:  200px;
 }

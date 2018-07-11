@@ -31,14 +31,31 @@
             });
         </script>
     </div>
+    <div class='row earnings'>
+        <div class='chart-container container-fluid' id='earnings_chart'></div>
+        <script>
+            $(document).ready(function() {
+                var security = getAbsolutePath();
+                $.ajax({
+                    url: 'load_earnings_chart',
+                    type: 'get',
+                    data: { id: security }
+                })
+            });
+        </script>
+    </div>
+
+
+    <div class='row'>
+        <strong>Symbol</strong> <%= @security.symbol %><br>
+        <strong>Company</strong> <%= @security.description %><br>
+        <strong>CIK</strong> <%= @security.identifier %><br>
+        <strong>Open</strong> <%= @security.previous_close %><br>
+        <strong>Last Price</strong> <%= @security.current_price %><br>
+        <strong>Last Update</strong> <%= @security.last_api_call %><br>
+    </div>
+    <div class='row'>
+        <%= link_to 'Edit', edit_security_path(@security) %> |
+        <%= link_to 'Back', securities_path %>
+    </div>
 </div>
-
-<strong>Symbol</strong> <%= @security.symbol %><br>
-<strong>Company</strong> <%= @security.description %><br>
-<strong>CIK</strong> <%= @security.identifier %><br>
-<strong>Open</strong> <%= @security.previous_close %><br>
-<strong>Last Price</strong> <%= @security.current_price %><br>
-<strong>Last Update</strong> <%= @security.last_api_call %><br>
-
-<%= link_to 'Edit', edit_security_path(@security) %> |
-<%= link_to 'Back', securities_path %>

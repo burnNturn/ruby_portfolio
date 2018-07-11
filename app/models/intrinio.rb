@@ -21,6 +21,11 @@ class Intrinio
         self.class.get('/data_point', options)
     end
     
+    def historical_data(options)
+        merge_auth(options)
+        self.class.get('/historical_data', options)
+    end
+    
     def data_point(symbol)
         options = {query: {identifier: symbol}}
         merge_auth(options)
@@ -44,8 +49,7 @@ class Intrinio
         self.class.get('/securities', options)
     end
     
-    def institutional_holders(symbol)
-        options = {query: {identifier: symbol}}
+    def institutional_holders(options)
         merge_auth(options)
         self.class.get('/securities/institutional_ownership', options)
     end

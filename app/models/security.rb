@@ -56,13 +56,29 @@ class Security < ActiveRecord::Base
     
     def institutional_holders
         sym = self.symbol
-        @holders = Intrinio.instance.institutional_holders(sym).parsed_response["data"]
+        options = {query: {identifier: sym}}
+        pages = Intrinio.instance.institutional_holders(options).parsed_response["total_pages"]
+        @holders = []
+        # options = {query: {identifier: sym, page_number: 1}}
+        # @holders = Intrinio.instance.institutional_holders(options).parsed_response['data']
         
-        # @holders = Hash.new
-        # company.each do |item|
-        #     @holders[item["item"]] = item["value"]
-        # end
-        # @holders
+        (1...pages).each do |page|
+            options = {query: {identifier: sym, page_number: page}}
+            @holders += Intrinio.instance.institutional_holders(options).parsed_response['data']
+        end
+        @holders
+    end
+    
+    def basic_eps
+        sym = self.symbol
+        start_date = (Date.today - (365 * 2)).to_s
+        options = {query: {identifier: sym, item: 'basiceps', start_date: start_date}}
+        @basic_eps = Intrinio.instance.historical_data(options).parsed_response['data']
+
+        @basic_eps
+    end
+    
+    def diluted_eps
         
     end
     
