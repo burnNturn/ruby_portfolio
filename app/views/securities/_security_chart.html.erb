@@ -9,7 +9,6 @@
             xPoints.push(point);
             point += 1;
         <% end %>
-        debugger;
         Chart.defaults.global.legend.display = false;
         var ctx = document.getElementById('securityChart').getContext('2d');
         var securityChart = new Chart(ctx, {
