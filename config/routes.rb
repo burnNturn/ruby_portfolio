@@ -26,7 +26,7 @@ Rails.application.routes.draw do
       get :search
       get :load_institutional_holders
       get :load_earnings_chart
-      
+      get :load_security_chart
     end
   end
   

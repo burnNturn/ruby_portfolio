@@ -14,8 +14,18 @@
         <div class='col-lg-6 col-sm-12 security-summary' id='security-summary'>
             <%= render 'security_summary_table' %>
         </div>
-        <div class='col-lg-6 col-sm-12 security-chart' id='security-chart'>
-            <%= render 'security_chart' %>
+        <div class='col-lg-6 col-sm-12 security-chart' id='security-chart-col'>
+            <div class='chart-container container-fluid' id='security-chart'></div>
+            <script>
+            $(document).ready(function() {
+                var security = getAbsolutePath();
+                $.ajax({
+                    url: 'load_security_chart',
+                    type: 'get',
+                    data: { id: security }
+                })
+            });
+        </script>
         </div>
     </div>
     <div class='row institutional-holders'>
@@ -32,7 +42,7 @@
         </script>
     </div>
     <div class='row earnings'>
-        <div class='chart-container container-fluid' id='earnings_chart'></div>
+        <div class='chart-container container-fluid' id='earnings-chart'></div>
         <script>
             $(document).ready(function() {
                 var security = getAbsolutePath();

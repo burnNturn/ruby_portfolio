@@ -82,6 +82,14 @@ class Security < ActiveRecord::Base
         
     end
     
+    def prices
+       sym = self.symbol
+       start_date = (Date.today - (365 * 2)).to_s
+    #   options = {query: {identifier: sym, 'close', start_date: start_date}}
+       @prices = Intrinio.instance.prices(sym, 'close', start_date).parsed_response['data']
+       @prices
+    end
+    
     
     protected
     

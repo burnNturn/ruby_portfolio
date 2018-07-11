@@ -86,6 +86,12 @@ class SecuritiesController < ApplicationController
     render 'js', template: 'securities/earnings_chart'
   end
   
+  def load_security_chart
+    @security = Security.find(params[:id])
+    @prices = @security.prices
+    render 'js', template: 'securities/security_chart'
+  end
+  
   
   private
     # Use callbacks to share common setup or constraints between actions.
