@@ -13,4 +13,7 @@ class ModulesController < ApplicationController
        @portfolios = @user.portfolios
     end
     
+    def load_comparison_chart
+    end
+    
 end
